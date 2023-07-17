@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.13'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'club'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '11'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'mysql:mysql-connector-java:8.0.33'//데이터베이스 mysql
+    implementation 'org.springframework.boot:spring-boot-starter-web'// 웹관련 기능
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'//스프링부트 테스트기능
+
+
+    implementation 'org.projectlombok:lombok'//lombok
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'//jpa
+
+
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'// swagger
+    implementation 'io.springfox:springfox-swagger-ui:3.0.0'// swagger
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+// build 시 jar,plain.jap 2개가 생성으로 터미널 빌드가 안됩
+// 아래 코드 입력해 줌으로 jar파일만 생성되게 해줌
+jar {
+    enabled = false
+}
