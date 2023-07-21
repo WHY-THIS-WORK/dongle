@@ -1,9 +1,10 @@
-import React from 'react';
+import Header from '../components/Header';
+import '../css/main.css';
 
 const Main = () => {
   return (
     <div className='main'>
-      여기는 메인
+      <Header/>
     </div>
   )
 }
