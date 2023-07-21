@@ -29,13 +29,12 @@ public class MainController {
 
     }
 
- /*   @GetMapping("/club/{clubId}")
+    @GetMapping("/club/{clubId}")
     public Optional<Club> getMainOneClub(@PathVariable("clubId") int clubId) {
         // 동아리 상페페이지 화면으로 이동 GET /club/{clubId}
         log.info(String.valueOf(clubId));
         return clubService.ClubOne(clubId);
     }
-*/
  
 
 }
