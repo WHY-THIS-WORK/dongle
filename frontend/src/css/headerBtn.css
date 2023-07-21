@@ -1,0 +1,23 @@
+.headerBtn {
+    width: 80px;
+    height: 40px;
+    background-color: #FF8256;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.header_menu-mybtn {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.header_menu-btn {
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #ffffff;
+    cursor: pointer;
+}

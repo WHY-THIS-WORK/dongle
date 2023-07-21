@@ -1,4 +1,4 @@
-package club.super_coding.controller;
+package club.super_coding.config;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Configurable;
