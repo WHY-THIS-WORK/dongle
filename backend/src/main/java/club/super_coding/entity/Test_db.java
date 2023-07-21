@@ -7,7 +7,10 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-
+/*
+* 사용안하는 파일
+* Entity 형식보기 위해서 만들었음
+* */
 
 @Entity
 //이 클래스가 엔티티임을 알림
