@@ -1,34 +1,41 @@
 package club.super_coding.controller;
 
-import club.super_coding.entity.Test_db;
-import club.super_coding.service.TestService;
-import io.swagger.annotations.Api;
+import club.super_coding.entity.Club;
+import club.super_coding.service.ClubService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import springfox.documentation.annotations.ApiIgnore;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
-@ApiIgnore
-@RestController
-@RequestMapping("/")
+/*
+ * 20230722 김주환
+ * 동아리 전체출력 기능
+ */
+@Slf4j
+@RestController// 적어주면 메소드 return시 Json형식으로 프론트에 전달
+@RequestMapping("/")// 아무지정없는 / 경로 요청시 호출
 public class MainController {
-    //Controller
+
     @Autowired
-    TestService testService;
 
-    @GetMapping("/main")
-    public Collection<Test_db> getMain(Model model) {
-        return testService.gettitle();
+    ClubService clubService;// 동아리관련 서비스 DI
+
+    @GetMapping    // 아무것도 적지 않았으므로 Get의 / 요청시 호출
+    public List<Club> getMainAllClub() {// Club 타입의 객체를 List형식으로 return(중복 값이 있을 수 있기 때문에 List로 받음)
+        //메인페이지 화면으로 이동 GET /
+        return clubService.ClubAllList();// 모든 동아리리스트를 return 으로 프론트에 보내준다
+
     }
 
-
-    @PostMapping("/main")
-    public String PostMain(String str) {
-        return str;
+ /*   @GetMapping("/club/{clubId}")
+    public Optional<Club> getMainOneClub(@PathVariable("clubId") int clubId) {
+        // 동아리 상페페이지 화면으로 이동 GET /club/{clubId}
+        log.info(String.valueOf(clubId));
+        return clubService.ClubOne(clubId);
     }
+*/
+ 
+
 }
