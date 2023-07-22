@@ -29,6 +29,7 @@ const SignUp = () => {
   // onChangeHandler
   const onIdChangeHandler = (event) => {
     setId(event.target.value);
+    setIsId(true);
   };
 
   const onNameChangeHandler = (event) => {
