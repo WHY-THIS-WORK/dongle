@@ -69,6 +69,8 @@ const SignUp = () => {
     if (res === true) {
       setIdMessage("사용 가능한 아이디입니다.");
       setIsId(true);
+    } else {
+      setIdMessage("");
     }
   };
 
