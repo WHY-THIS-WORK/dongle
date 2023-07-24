@@ -1,6 +1,10 @@
-import React from 'react';
 import '../css/clubjoin.css';
-import Header from '../components/Header';
+import Header from '../components/header/Header';
+import JoinInputTitle from '../components/clubjoin/JoinInputTitle';
+import JoinInputValue from '../components/clubjoin/JoinInputValue';
+import JoinBtn from '../components/clubjoin/JoinBtn';
+import JoinInputTextarea from '../components/clubjoin/JoinInputTextarea';
+import SendBtn from '../components/public/SendBtn';
 
 const Clubjoin = () => {
 
@@ -11,55 +15,30 @@ const Clubjoin = () => {
         <div className="clubjoin_title">
           <h1>동아리 신청</h1>
         </div>
-        <div className='clubjoin_input'>
-          <div className="clubjoin_input-title">
-            <span>동아리명</span>
-          </div>
-          <div className="clubjoin_input-value">
-            <input type='text' placeholder='한/영문 12자 이하' />
-          </div>
+        <div className='clubjoin_input name'>
+          <JoinInputTitle title='동아리명' />
+          <JoinInputValue placeholder='한/영문 12자 이하' />
         </div>
-        <div className='clubjoin_input'>
-          <div className="clubjoin_input-title">
-            <span>카테고리</span>
-          </div>
-          <div className="clubjoin_input-value">
-            <button className='active'>코딩</button>
-            <button>독서</button>
-            <button>운동</button>
-            <button>기타</button>
-          </div>
+        <div className='clubjoin_input categories'>
+          <JoinInputTitle title='카테고리' />
+          <JoinBtn />
         </div>
-        <div className='clubjoin_input'>
-          <div className="clubjoin_input-title">
-            <span>동아리 설명</span>
-          </div>
-          <div className="clubjoin_input-value">
-            <input type='text' placeholder='동아리에 대한 간단한 설명을 적어주세요.' />
-          </div>
+        <div className='clubjoin_input detail'>
+          <JoinInputTitle title='동아리 설명' />
+          <JoinInputValue placeholder='동아리에 대한 간단한 설명을 적어주세요.' />
         </div>
-        <div className='clubjoin_input'>
-          <div className="clubjoin_input-title">
-            <span>동아리 활동방향</span>
-          </div>
-          <div className="clubjoin_input-value">
-            <textarea placeholder='동아리를 통해 하고 싶은것들을 적어주세요.' />
-          </div>
+        <div className='clubjoin_input direction'>
+          <JoinInputTitle title='동아리 활동방향' />
+          <JoinInputTextarea />
         </div>
-        <div className='clubjoin_input'>
-          <div className="clubjoin_input-title">
-            <span>게시판 선택</span>
-          </div>
+        <div className='clubjoin_input notice'>
+          <JoinInputTitle title='게시판 선택' />
           {/* <div className="clubjoin_input-tag">
             <span>JS</span>
           </div> */}
-          <div className="clubjoin_input-value">
-            <input type='text' placeholder='게시판 이름을 입력해주세요.' />
-          </div>
+          <JoinInputValue placeholder='게시판 이름을 입력해주세요.' />
         </div>
-        <div className="clubjoin_btn-send">
-          <button>동아리 신청하기</button>
-        </div>
+        <SendBtn text='동아리 신청하기' />
       </div>
     </div>
   )

@@ -1,5 +1,5 @@
-import '../css/header.css';
-import HeaderBtn from './HeaderBtn';
+import '../../css/header.css';
+import HeaderBtn from '../header/HeaderBtn';
 
 const Header = () => {
     return (
