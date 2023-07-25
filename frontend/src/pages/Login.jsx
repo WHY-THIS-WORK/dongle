@@ -3,7 +3,6 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import SignupButton from "../components/SignupButton";
 import "../css/login.css";
-import Header from "../components/Header";
 
 const Login = () => {
   // 사용자 입력 상태 저장

@@ -2,7 +2,6 @@ import { SHA256 } from "crypto-js";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import IdCheck from "../components/IdCheck";
 import "../css/signup.css";
-import Header from "../components/Header";
 
 const SignUp = () => {
   // 사용자 입력 상태 저장
