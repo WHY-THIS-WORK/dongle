@@ -1,16 +1,18 @@
 import React from "react";
+import "../css/idcheck.css";
 
-const IdCheck = (props) => {
-  const onIdCheckHandler = () => {
-    const userId = props.id;
-    console.log(userId);
-  };
-
+const IdCheck = ({ id, idMessage, onIdCheckHandler }) => {
   return (
-    <div className="id-check__button">
-      <button id="id-check" type="button" onClick={onIdCheckHandler}>
+    <div className="id-check">
+      <button
+        className="id-check__button"
+        id="id-check"
+        type="button"
+        onClick={() => onIdCheckHandler(id)}
+      >
         아이디 중복 확인
       </button>
+      {<span className="error__message">{idMessage}</span>}
     </div>
   );
 };
