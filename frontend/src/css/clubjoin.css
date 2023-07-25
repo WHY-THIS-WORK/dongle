@@ -1,0 +1,66 @@
+.clubjoin {
+    width: 100vw;
+    height: 100vh;
+    
+
+    /* background-color: rgb(200, 174, 139); */
+}
+
+.clubjoin_container {
+    height: 100vh;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 155px;
+    box-sizing: border-box;
+overflow: auto;
+
+    /* background-color: antiquewhite; */
+}
+
+.clubjoin_title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    /* background-color: aliceblue; */
+}
+
+.clubjoin_title>h1 {
+    font-size: 25px;
+    font-family: 'Inter';
+    font-weight: 700;
+    color: #FF8256;
+}
+
+.clubjoin_input {
+    width: 430px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    margin-bottom: 15px;
+
+    /* background-color: rgb(149, 205, 255); */
+}
+
+.clubjoin_input-tag{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.clubjoin_input-tag>span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 25px;
+    background-color: #FF8256;
+    border-radius: 50px;
+    font-size: 14px;
+    font-family: 'Inter';
+    font-weight: 900;
+    color: #ffffff;
+}
