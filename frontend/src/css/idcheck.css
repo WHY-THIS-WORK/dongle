@@ -1,0 +1,12 @@
+.id-check {
+  display: flex;
+  align-items: center;
+}
+
+.id-check__button {
+  background-color: #ff885e;
+  font-size: 0.5rem;
+  margin-top: 0.25rem;
+  color: white;
+  font-weight: bold;
+}

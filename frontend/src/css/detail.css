@@ -1,0 +1,26 @@
+.detail {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: rgb(200, 174, 139); */
+}
+
+.detail_container {
+    width: 80%;
+    height: 82%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 45px;
+    box-sizing: border-box;
+    overflow: auto;
+    box-shadow: -4px 4px 30px rgba(158, 158, 158, 0.2);
+
+    background-color: #ffffff;
+}
+
+
