@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 
 @SpringBootApplication
 @EntityScan(basePackages = {"club.super_coding.entity"})
-
 public class SuperCodingApplication {
     public static void main(String[] args) {
         Logger logger = LoggerFactory.getLogger(SuperCodingApplication.class);

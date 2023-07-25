@@ -1,8 +1,10 @@
 import { SHA256 } from "crypto-js";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import IdCheck from "../components/IdCheck";
+import IdCheck from "../components/signup/IdCheck";
 import "../css/signup.css";
-import Header from "../components/Header";
+import SignupInput from "../components/signup/SignupInput";
+import SignupSubmitBtn from "../components/signup/SignupSubmitBtn";
+import Header from "../components/header/Header";
 
 const SignUp = () => {
   // 사용자 입력 상태 저장
@@ -181,105 +183,76 @@ const SignUp = () => {
   }, [tel]);
 
   return (
-    <>
+    <div className="signup">
       <Header />
-      <div className="signup">
-        <form onSubmit={onSubmitHandler}>
-          <div className="signup__form">
-            <div className="signup__title">회원가입</div>
-            <div className="signup__form-block">
-              <label className="signup__form-title">아이디</label>
-              <input
-                type="text"
-                id="id"
-                value={id}
-                className="signup__form-input"
-                placeholder="아이디를 입력해주세요."
-                onChange={onIdChangeHandler}
-                ref={idRef}
-              />
-              <IdCheck
-                id={id}
-                idMessage={idMessage}
-                isId={isId}
-                onIdCheckHandler={onIdCheckHandler}
-              />
-            </div>
-            <div className="signup__form-block">
-              <label className="signup__form-title">비밀번호</label>
-              <input
-                type="password"
-                id="pwd"
-                value={pwd}
-                className="signup__form-input"
-                placeholder="영문자, 숫자, 특수문자 조합된 8자 이상"
-                onChange={onPwdChangeHandler}
-                ref={pwdRef}
-              />
-              {<span className="error__message">{pwdMessage}</span>}
-            </div>
-            <div className="signup__form-block">
-              <label className="signup__form-title">비밀번호 확인</label>
-              <input
-                type="password"
-                id="pwd2"
-                value={pwd2}
-                className="signup__form-input"
-                placeholder="동일한 비밀번호를 다시 입력해주세요."
-                onInput={onPwdCheckHandler}
-                ref={pwd2Ref}
-              />
-              {<span className="error__message">{pwd2Message}</span>}
-            </div>
-            <div className="signup__form-block">
-              <label className="signup__form-title">이름</label>
-              <input
-                type="text"
-                id="name"
-                maxLength={5}
-                value={name}
-                className="signup__form-input"
-                placeholder="이름을 입력해주세요."
-                onChange={onNameChangeHandler}
-                ref={nameRef}
-              />
-              {<span className="error__message">{nameMessage}</span>}
-            </div>
-            <div className="signup__form-block">
-              <label className="signup__form-title">이메일</label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                className="signup__form-input"
-                placeholder="이메일 주소를 입력해주세요."
-                onChange={onEmailChangeHandler}
-                ref={emailRef}
-              />
-              {<span className="error__message">{emailMessage}</span>}
-            </div>
-            <div className="signup__form-block">
-              <label className="signup__form-title">연락처</label>
-              <input
-                type="tel"
-                id="tel"
-                value={tel}
-                className="signup__form-input"
-                placeholder="휴대폰 번호를 입력해주세요."
-                onChange={onTelChangeHandler}
-                ref={telRef}
-              />
-              {<span className="error__message">{telMessage}</span>}
-            </div>
-            <div className="signup__submit">
-              <button type="submit" className="signup__submit-button">
-                회원가입하기
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </>
+      <form onSubmit={onSubmitHandler}>
+        <div className="signup__form">
+          <div className="signup__title">회원가입</div>
+          <SignupInput
+            title={"아이디"}
+            type={"text"}
+            id={"id"}
+            value={id}
+            onChangeHandler={onIdChangeHandler}
+            ref={idRef}
+            message={idMessage}
+            placeholder={"아이디를 입력해주세요."}
+          />
+          <IdCheck id={id} onIdCheckHandler={onIdCheckHandler} />
+          <SignupInput
+            title={"비밀번호"}
+            type={"password"}
+            id={"pwd"}
+            value={pwd}
+            onChangeHandler={onPwdChangeHandler}
+            ref={pwdRef}
+            message={pwdMessage}
+            placeholder={"영문자, 숫자, 특수문자 조합된 8자 이상"}
+          />
+          <SignupInput
+            title={"비밀번호 확인"}
+            type={"password"}
+            id={"pwd2"}
+            value={pwd2}
+            onChangeHandler={onPwdCheckHandler}
+            ref={pwd2Ref}
+            message={pwd2Message}
+            placeholder={"동일한 비밀번호를 다시 입력해주세요."}
+          />
+          <SignupInput
+            title={"닉네임"}
+            type={"text"}
+            id={"name"}
+            value={name}
+            onChangeHandler={onNameChangeHandler}
+            ref={nameRef}
+            message={nameMessage}
+            placeholder={"닉네임을 입력해주세요."}
+          />
+          <SignupInput
+            title={"이메일"}
+            type={"email"}
+            id={"email"}
+            value={email}
+            onChangeHandler={onEmailChangeHandler}
+            ref={emailRef}
+            message={emailMessage}
+            placeholder={"이메일 주소를 입력해주세요."}
+          />
+          <SignupInput
+            title={"연락처"}
+            type={"tel"}
+            id={"tel"}
+            value={tel}
+            onChangeHandler={onTelChangeHandler}
+            ref={telRef}
+            message={telMessage}
+            placeholder={"휴대폰 번호를 입력해주세요."}
+          />
+          <SignupSubmitBtn />
+        </div>
+      </form>
+    </div>
   );
 };
 
