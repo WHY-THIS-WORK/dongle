@@ -1,0 +1,16 @@
+.signup__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.signup__button-button {
+  margin: 1rem 0 1rem 0;
+  width: 100%;
+  background-color: #ff885e;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1rem;
+}
