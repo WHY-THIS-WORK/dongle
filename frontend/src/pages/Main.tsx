@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import Dots from '../components/Dots';
+import Dots from '../components/main/Dots';
 import '../css/main.css';
-import Header from "../components/Header";
-import Main1 from "../components/Main1";
-import Main2 from "../components/Main2";
-import Main3 from "../components/Main3";
+import Header from "../components/header/Header";
+import Main1 from "../components/main/Main1";
+import Main2 from "../components/main/Main2";
+import Main3 from "../components/main/Main3";
 
 const DIVIDER_HEIGHT = 5;
 

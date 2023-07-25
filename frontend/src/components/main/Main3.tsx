@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import '../css/main3.css';
+import '../../css/main3.css';
 
 const Main3 = () => {
 

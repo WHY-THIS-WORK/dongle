@@ -1,4 +1,4 @@
-import '../css/headerBtn.css';
+import '../../css/headerBtn.css';
 
 interface navigate {
     address: string;
