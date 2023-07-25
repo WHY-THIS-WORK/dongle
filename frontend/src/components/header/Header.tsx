@@ -1,11 +1,15 @@
+import { useNavigate } from 'react-router-dom';
 import '../../css/header.css';
 import HeaderBtn from '../header/HeaderBtn';
 
 const Header = () => {
+
+    const navigate = useNavigate();
+
     return (
         <header className='header'>
             <div className='header_container'>
-                <div className='logo'>
+                <div className='logo' onClick={() => navigate('/')}>
                     로고
                 </div>
                 <div className='header_menu'>
