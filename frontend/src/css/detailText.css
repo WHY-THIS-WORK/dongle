@@ -1,0 +1,11 @@
+.detail_text {
+    width: 70%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    background-color: #FAFAFA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
