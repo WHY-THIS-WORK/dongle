@@ -181,7 +181,6 @@ const SignUp = () => {
 
   return (
     <>
-      <Header />
       <div className="signup">
         <form onSubmit={onSubmitHandler}>
           <div className="signup__form">

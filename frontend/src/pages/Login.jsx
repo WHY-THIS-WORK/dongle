@@ -78,7 +78,6 @@ const Login = () => {
 
   return (
     <>
-      <Header />
       <div className="login">
         <form onSubmit={onSubmitHandler}>
           <div className="login__form">
