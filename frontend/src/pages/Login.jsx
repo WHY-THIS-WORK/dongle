@@ -1,8 +1,11 @@
 import { SHA256 } from "crypto-js";
 import axios from "axios";
-import React, { useEffect, useRef, useState } from "react";
-import SignupButton from "../components/SignupButton";
+import React, { useRef, useState } from "react";
+import MoveToSignupBtn from "../components/login/MoveToSignupBtn";
 import "../css/login.css";
+import LoginInput from "../components/login/LoginInput";
+import Header from "../components/header/Header";
+import LoginSubmitBtn from "../components/login/LoginSubmitBtn";
 
 const Login = () => {
   // 사용자 입력 상태 저장
@@ -77,47 +80,36 @@ const Login = () => {
   };
 
   return (
-    <>
-      <div className="login">
-        <form onSubmit={onSubmitHandler}>
-          <div className="login__form">
-            <div className="login__title">로그인</div>
-            <div className="login__form-block">
-              <label className="login__form-title">아이디</label>
-              <input
-                type="text"
-                id="id"
-                value={id}
-                className="login__form-input"
-                placeholder="아이디를 입력해주세요."
-                onInput={onIdChangeHandler}
-                ref={idRef}
-              />
-              {<span className="error__message">{idMessage}</span>}
-            </div>
-            <div className="login__form-block">
-              <label className="login__form-title">비밀번호</label>
-              <input
-                type="password"
-                id="pwd"
-                value={pwd}
-                className="login__form-input"
-                placeholder="비밀번호를 입력해주세요."
-                onChange={onPwdChangeHandler}
-                ref={pwdRef}
-              />
-              {<span className="error__message">{pwdMessage}</span>}
-            </div>
-            <div className="login__submit">
-              <button id="login" type="submit" className="login__submit-button">
-                로그인
-              </button>
-            </div>
-            <SignupButton />
-          </div>
-        </form>
-      </div>
-    </>
+    <div className="login">
+      <Header />
+      <form onSubmit={onSubmitHandler}>
+        <div className="login__form">
+          <div className="login__title">로그인</div>
+          <LoginInput
+            title={"아이디"}
+            type={"text"}
+            id={"id"}
+            value={id}
+            onChangeHandler={onIdChangeHandler}
+            ref={idRef}
+            message={idMessage}
+            placeholder={"아이디를 입력해주세요."}
+          />
+          <LoginInput
+            title={"비밀번호"}
+            type={"password"}
+            id={"pwd"}
+            value={pwd}
+            onChangeHandler={onPwdChangeHandler}
+            ref={pwdRef}
+            message={pwdMessage}
+            placeholder={"비밀번호를 입력해주세요."}
+          />
+          <LoginSubmitBtn />
+          <MoveToSignupBtn />
+        </div>
+      </form>
+    </div>
   );
 };
 

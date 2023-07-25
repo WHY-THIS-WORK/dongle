@@ -1,7 +1,7 @@
 import React from "react";
-import "../css/signupbutton.css";
+import "../../css/signupbutton.css";
 
-const SignupButton = () => {
+const MoveToSignupBtn = () => {
   const onSignupHandler = () => {
     window.location.href = "signup";
   };
@@ -20,4 +20,4 @@ const SignupButton = () => {
   );
 };
 
-export default SignupButton;
+export default MoveToSignupBtn;
