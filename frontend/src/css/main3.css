@@ -1,0 +1,141 @@
+.main3 {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 100px;
+    background-color: #fccd56;
+    overflow: hidden;
+    padding-top: 110px;
+    box-sizing: border-box;
+}
+
+.main3_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* margin-top: 200px; */
+    height: 50%;
+    margin-bottom: 40px;
+
+    /* background-color: rgb(128, 158, 185); */
+}
+
+.main3_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    /* background-color: #683b3b; */
+}
+
+.main3_title-top {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* background-color: #FFFB92; */
+}
+
+.main3_title-top>span {
+    font-family: 'Inter';
+    font-weight: 900;
+    font-size: 75px;
+    line-height: 103px;
+    color: #ffffff;
+}
+
+.main3_title-bottom {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -15px;
+    margin-bottom: 15px;
+
+    /* background-color: #FFFB92; */
+}
+
+.main3_title-bottom>span {
+    font-family: 'Inter';
+    font-weight: 900;
+    font-size: 75px;
+    line-height: 103px;
+    color: #ffffff;
+}
+
+.main3_subtitle {
+    /* width: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    /* background-color: #683b3b; */
+}
+
+.main3_subtitle>span {
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.main3_btn {
+    width: 349px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+}
+
+.main3_btn>span {
+    font-family: 'Inter';
+    font-weight: 900;
+    font-size: 23px;
+    color: #ffffff;
+}
+
+.main3_cards {
+    display: flex;
+    justify-content: left;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 40px;
+    /* 카드 사이의 간격을 조정합니다. */
+    padding: 0 40px;
+    /* 좌우 여백을 추가합니다. */
+    width: calc(75%);
+    white-space: nowrap;
+
+    /* background-color: aqua; */
+}
+
+/* 화면에서 스크롤바 안보이게 */
+.main3_cards::-webkit-scrollbar {
+    display: none;
+}
+
+.main3_cards_container {
+    display: flex;
+}
+
+.main3_card {
+    width: 341px;
+    height: 204px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    scroll-snap-align: start;
+    margin-left: 27px;
+}

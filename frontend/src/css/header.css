@@ -1,0 +1,40 @@
+
+header{
+    width: 100vw;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #E7E7E7;
+    background-color: #ffffff;
+}
+
+.header_container{
+    width: 80%;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+
+    /* background-color: antiquewhite; */
+}
+
+.logo{
+    width: 146px;
+    height: 65px;
+
+    background-color: rgb(225, 225, 225);
+}
+
+.header_menu{
+    width: 320px;
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* background-color: aqua; */
+}
+
