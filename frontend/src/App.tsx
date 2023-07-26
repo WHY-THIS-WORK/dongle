@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Main from "./pages/Main";
@@ -7,6 +6,7 @@ import Mypage from "./pages/Mypage";
 import Signup from "./pages/Signup";
 import Detail from "./pages/Detail";
 import Clubjoin from "./pages/Clubjoin";
+import Club from "./pages/Club";
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
           <Route path='/mypage' element={<Mypage />} />
           <Route path='/detail' element={<Detail />} />
           <Route path='/clubjoin' element={<Clubjoin />} />
+          <Route path='/club' element={<Club />} />
         </Routes>
       </BrowserRouter>
     </div>
