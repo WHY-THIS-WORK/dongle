@@ -12,28 +12,9 @@ import org.slf4j.LoggerFactory;
 
 @SpringBootApplication
 @EntityScan(basePackages = {"club.super_coding.entity"})
-<<<<<<< HEAD
 public class SuperCodingApplication {
-    //Cors 정책
-=======
-
-public class SuperCodingApplication {
->>>>>>> develop
     public static void main(String[] args) {
         Logger logger = LoggerFactory.getLogger(SuperCodingApplication.class);
         SpringApplication.run(SuperCodingApplication.class, args);
     }
-
-    @Bean
-    public WebMvcConfigurer corsConfigurer(){
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry){
-                registry.addMapping("/**")
-                        .allowedOriginPatterns();
-
-            }
-        };
-    }
-
 }
