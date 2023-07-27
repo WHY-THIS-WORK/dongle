@@ -1,22 +1,37 @@
-import React from 'react'
+
+import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../../css/clubCard.css';
 
-type cardList = {
-    title: string,
-    category: string,
-    text: string
+interface CardItem {
+    category: number;
+    clubId: number;
+    deleted: number;
+    name: string;
+    boardName: string;
+    description: string;
+    direction: string;
+
 }
 
-const ClubCard = (props: cardList) => {
+const ClubCard = (props: CardItem) => {
+
+    const navigate = useNavigate();
 
     //<br>태그에 끊어서 span태그 생성
-    const textLines = props.text.split('<br>');
+    const textLines = props.description.split('<br>');
+
+    console.log('clubId',props.clubId)
+
+    const moveDetailHandle=()=>{
+        navigate(`/detail/${props.clubId}`)
+    }
 
     return (
-        <div className="main3_card">
+        <div className="main3_card" onClick={() => { moveDetailHandle() }}>
             <div className="top">
                 <div className="card_title">
-                    <h3>{props.title}</h3>
+                    <h3>{props.name}</h3>
                 </div>
                 <div className="card_category">
                     <span>{props.category}</span>
