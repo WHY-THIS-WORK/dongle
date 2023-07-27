@@ -3,7 +3,9 @@ package club.super_coding.entity;
 
 import club.super_coding.dto.MemberDTO;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
@@ -12,11 +14,13 @@ import javax.persistence.*;
 
 //db 정의 컬럼 생성
 
-@Entity(name ="member")
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity(name ="Entity")
 @Getter
 @Setter
 @Table(name = "member")
-public class MemberEntity {
+public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -43,7 +47,7 @@ public class MemberEntity {
     @Column
     private int deleted;
 
-    public MemberEntity(MemberDTO dto){
+    public Member(MemberDTO dto){
         this.password = dto.getPassword();
         this.email = dto.getEmail();
         this.nickname = dto.getNickname();
@@ -51,8 +55,6 @@ public class MemberEntity {
         this.memberId = dto.getMemberId();
         this.join_date = dto.getJoinDate();
     }
-
-
 
 }
 
