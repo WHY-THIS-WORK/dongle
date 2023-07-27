@@ -1,6 +1,19 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import '../../css/main3.css';
+import ClubCard from "./ClubCard";
+
+interface CardItem {
+  category: number;
+  clubId: number;
+  deleted: number;
+  name: string;
+  boardName: string;
+  description: string;
+  direction: string;
+  
+}
 
 const Main3 = () => {
 
@@ -10,6 +23,19 @@ const Main3 = () => {
   const [scrollLeft, setScrollLeft] = useState(0);
 
   const navigate = useNavigate();
+
+  const [cardList, setCardList] = useState < CardItem[]>([]);
+  console.log('cardList', cardList);
+
+  useEffect(() => {
+    axios.get('http://52.78.248.174:5173/')
+    .then((res)=>{
+      setCardList(res.data);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  }, [])
 
   // console.log('containerRef', containerRef);
   // console.log('isDragging', isDragging);
@@ -65,16 +91,9 @@ const Main3 = () => {
         ref={containerRef}
       >
         <div className='main3_cards_container'>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
+          {cardList?.map((item, index) => (
+            <ClubCard key={index} {...item} />
+          ))}
         </div>
       </div>
     </div>

@@ -14,14 +14,14 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path='/' element={<Main />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
           <Route path="/mypage/profile" element={<Mypage />} />
           <Route path="/mypage/myclub" element={<MyClub />} />
-          <Route path="/detail" element={<Detail />} />
-          <Route path="/clubjoin" element={<Clubjoin />} />
-          <Route path="/club" element={<Club />} />
+          <Route path='/detail/:id' element={<Detail />} />
+          <Route path='/clubjoin' element={<Clubjoin />} />
+          <Route path='/club' element={<Club />} />
         </Routes>
       </BrowserRouter>
     </div>
