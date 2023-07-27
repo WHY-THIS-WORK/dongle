@@ -23,12 +23,6 @@ public class MemberEntity {
     @Column(name = "id")
     private int id;
 
-
-    @Column(name = "club_id")
-    @ManyToMany(mappedBy = "memberId")
-    Set<Club> clubId;// Club테이블 다대다 조인
-
-
     //unique = true 유일한 값만 저장할수 있음을 의미 중복체크
     @Column(name = "member_id")
     private String memberId;
