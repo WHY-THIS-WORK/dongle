@@ -18,7 +18,11 @@ const Main = () => {
   const outerDivRef = useRef<HTMLDivElement>(null);
   const [scrollIndex, setScrollIndex] = useState<number>(1);
 
+<<<<<<< HEAD
   console.log("scrollIndex", scrollIndex);
+=======
+  // console.log('scrollIndex', scrollIndex);
+>>>>>>> 19a8be570bc3d667a900e9c61c77ac7f6c4aa063
 
   useEffect(() => {
     const wheelHandler = (e: WheelEvent) => {
@@ -35,7 +39,7 @@ const Main = () => {
           scrollTop < pageHeight
         ) {
           // 현재 1페이지
-          console.log("현재 1페이지, down");
+          // console.log("현재 1페이지, down");
           outerDivRef.current?.scrollTo({
             top: pageHeight + DIVIDER_HEIGHT,
             left: 0,
@@ -48,7 +52,7 @@ const Main = () => {
           scrollTop < pageHeight * 2
         ) {
           // 현재 2페이지
-          console.log("현재 2페이지, down");
+          // console.log("현재 2페이지, down");
           outerDivRef.current?.scrollTo({
             top: pageHeight * 2 + DIVIDER_HEIGHT * 2,
             left: 0,
@@ -57,7 +61,7 @@ const Main = () => {
           setScrollIndex(3);
         } else {
           // 현재 3페이지
-          console.log("현재 3페이지, down");
+          // console.log("현재 3페이지, down");
           outerDivRef.current?.scrollTo({
             top: pageHeight * 2 + DIVIDER_HEIGHT * 2,
             left: 0,
@@ -73,7 +77,7 @@ const Main = () => {
           scrollTop < pageHeight
         ) {
           // 현재 1페이지
-          console.log("현재 1페이지, up");
+          // console.log("현재 1페이지, up");
           outerDivRef.current?.scrollTo({
             top: 0,
             left: 0,
@@ -86,7 +90,7 @@ const Main = () => {
           scrollTop < pageHeight * 2
         ) {
           // 현재 2페이지
-          console.log("현재 2페이지, up");
+          // console.log("현재 2페이지, up");
           outerDivRef.current?.scrollTo({
             top: 0,
             left: 0,
@@ -95,13 +99,13 @@ const Main = () => {
           setScrollIndex(1);
         } else {
           // 현재 3페이지
-          console.log("현재 3페이지, up");
+          // console.log("현재 3페이지, up");
           outerDivRef.current?.scrollTo({
             top: pageHeight + DIVIDER_HEIGHT,
             left: 0,
             behavior: "smooth",
           });
-          console.log("현재 3페이지, up");
+          // console.log("현재 3페이지, up");
           setScrollIndex(2);
         }
       }
