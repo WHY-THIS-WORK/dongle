@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -22,17 +23,8 @@ public class Club {
     @Column(name = "club_id")
     private int clubId;// 동아리ID
 
-
-    @ManyToMany
-    @JoinTable(
-        name = "club_member",
-        joinColumns = @JoinColumn(name = "club_id"),
-        inverseJoinColumns = @JoinColumn(name = "member_id"))
-    Set<MemberEntity> memberId;// Memeber 테이블 다대다 조인
-
-
     @Column(name = "category")
-    private String category;// 카테고리
+    private int category;// 카테고리
 
     @Column
     private String name;// 동아리명
