@@ -1,4 +1,5 @@
 import Board from "../components/board";
+import SideBar from "../components/club/SideBar";
 import Header from "../components/header/Header";
 import { styled } from "styled-components";
 
@@ -9,7 +10,9 @@ export default function Club() {
         <Header />
         <ClubWrapper>
           <Vertical>
-            <ClubSideBar>ClubSideBar 나와야 하고</ClubSideBar>
+            <ClubSideBar>
+              <SideBar />
+            </ClubSideBar>
             <BoardComponent>
               <Board />
             </BoardComponent>
