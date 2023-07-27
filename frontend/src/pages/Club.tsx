@@ -1,4 +1,5 @@
 import Board from "../components/board";
+import SideBar from "../components/club/SideBar";
 import Header from "../components/header/Header";
 import { styled } from "styled-components";
 
@@ -9,7 +10,9 @@ export default function Club() {
         <Header />
         <ClubWrapper>
           <Vertical>
-            <ClubSideBar>ClubSideBar 나와야 하고</ClubSideBar>
+            <ClubSideBar>
+              <SideBar />
+            </ClubSideBar>
             <BoardComponent>
               <Board />
             </BoardComponent>
@@ -24,8 +27,8 @@ const ClubWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 1920px;
-  height: 1080px;
+  width: 100vw;
+  height: 100vh;
   background-color: beige;
 `;
 
