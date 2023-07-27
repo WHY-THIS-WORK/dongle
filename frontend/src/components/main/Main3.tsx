@@ -1,7 +1,19 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import '../../css/main3.css';
 import ClubCard from "./ClubCard";
+
+interface CardItem {
+  category: number;
+  clubId: number;
+  deleted: number;
+  name: string;
+  boardName: string;
+  description: string;
+  direction: string;
+  
+}
 
 const Main3 = () => {
 
@@ -12,54 +24,18 @@ const Main3 = () => {
 
   const navigate = useNavigate();
 
-  const temporaryList = [
-    {
-      title:'프론트엔드 커뮤니티',
-      category:'코딩',
-      text:'프론트엔드끼리 정보 공유와<br>소통을 위한 동아리 입니다.'
-    },
-    {
-      title:'백엔드 커뮤니티',
-      category:'코딩',
-      text:'백엔드끼리 정보 공유와<br>소통을 위한 동아리 입니다.'
-    },
-    {
-      title:'독서합시다',
-      category:'독서',
-      text:'독서를 좋아하는<br>동아리 입니다.'
-    },
-    {
-      title:'프론트엔드 커뮤니티',
-      category:'코딩',
-      text:'프론트엔드끼리 정보 공유와<br>소통을 위한 동아리 입니다.'
-    },
-    {
-      title:'백엔드 커뮤니티',
-      category:'코딩',
-      text:'백엔드끼리 정보 공유와<br>소통을 위한 동아리 입니다.'
-    },
-    {
-      title:'독서합시다',
-      category:'독서',
-      text:'독서를 좋아하는<br>동아리 입니다.'
-    },
-    {
-      title:'프론트엔드 커뮤니티',
-      category:'코딩',
-      text:'프론트엔드끼리 정보 공유와<br>소통을 위한 동아리 입니다.'
-    },
-    {
-      title:'백엔드 커뮤니티',
-      category:'코딩',
-      text:'백엔드끼리 정보 공유와<br>소통을 위한 동아리 입니다.'
-    },
-    {
-      title:'독서합시다',
-      category:'독서',
-      text:'독서를 좋아하는<br>동아리 입니다.'
-    },
-    
-  ]
+  const [cardList, setCardList] = useState < CardItem[]>([]);
+  console.log('cardList', cardList);
+
+  useEffect(() => {
+    axios.get('http://52.78.248.174:5173/')
+    .then((res)=>{
+      setCardList(res.data);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  }, [])
 
   // console.log('containerRef', containerRef);
   // console.log('isDragging', isDragging);
@@ -115,7 +91,7 @@ const Main3 = () => {
         ref={containerRef}
       >
         <div className='main3_cards_container'>
-          {temporaryList.map((item, index) => (
+          {cardList?.map((item, index) => (
             <ClubCard key={index} {...item} />
           ))}
         </div>
