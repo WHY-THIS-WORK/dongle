@@ -4,7 +4,7 @@ import IdCheck from "../components/signup/IdCheck";
 import "../css/signup.css";
 import SignupInput from "../components/signup/SignupInput";
 import SignupSubmitBtn from "../components/signup/SignupSubmitBtn";
-import Header from "../components/header/Header";
+import Header2 from "../components/header/Header2";
 
 const SignUp = () => {
   // 사용자 입력 상태 저장
@@ -190,7 +190,7 @@ const SignUp = () => {
 
   return (
     <div className="signup">
-      <Header />
+      <Header2 />
       <form onSubmit={onSubmitHandler}>
         <div className="signup__form">
           <div className="signup__title">회원가입</div>

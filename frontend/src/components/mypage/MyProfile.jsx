@@ -3,8 +3,13 @@ import "../../css/mypageMain.css";
 import ProfileBlock from "./ProfileBlock";
 import MypageInput from "./MypageInput";
 import MypageProfileEditBtn from "./MypageProfileEditBtn";
+import MypageLogoutBtn from "./MypageLogoutBtn";
+import { useRecoilState } from "recoil";
+import { LoginState } from "../../recoil/atoms/LoginState";
 
 const MyProfile = () => {
+  const [isLogin, setIsLogin] = useRecoilState(LoginState);
+
   const [email, setEmail] = useState("TEST@TEST.com");
   const [tel, setTel] = useState("010-1234-1234");
 
@@ -20,6 +25,13 @@ const MyProfile = () => {
   const onEditHandler = () => {
     setEmailEdit(true);
     setTelEdit(true);
+  };
+
+  const onLogOutHandler = () => {
+    setIsLogin(false);
+    window.localStorage.removeItem("토큰");
+    window.location.href = "/";
+    window.alert("로그아웃 되었습니다.");
   };
 
   const onEmailChangeHandler = (event) => {
@@ -73,6 +85,17 @@ const MyProfile = () => {
   }, [tel]);
 
   useEffect(() => {
+    const isLoginHandler = () => {
+      if (!isLogin) {
+        window.alert("로그인 해주세요!");
+        window.location.href = "/login";
+      }
+
+      isLoginHandler();
+    };
+  });
+
+  useEffect(() => {
     const getUsersProfile = async () => {
       const response = await fetch("/users_profile.json");
       const data = await response.json();
@@ -105,6 +128,7 @@ const MyProfile = () => {
             max={13}
           />
           <MypageProfileEditBtn onEditHandler={onEditHandler} />
+          <MypageLogoutBtn onLogOutHandler={onLogOutHandler} />
         </div>
       </div>
     </div>
