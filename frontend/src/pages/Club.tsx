@@ -27,8 +27,8 @@ const ClubWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 1920px;
-  height: 1080px;
+  width: 100vw;
+  height: 100vh;
   background-color: beige;
 `;
 
