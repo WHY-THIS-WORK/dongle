@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import '../../css/main3.css';
+import ClubCard from "./ClubCard";
 
 const Main3 = () => {
 
@@ -65,16 +66,7 @@ const Main3 = () => {
         ref={containerRef}
       >
         <div className='main3_cards_container'>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
+          <ClubCard/>
         </div>
       </div>
     </div>
