@@ -1,0 +1,46 @@
+.mypage-input {
+  margin-bottom: 1.5rem;
+}
+
+.mypage-input__title {
+  display: block;
+  color: #3f3f3f;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 0.5rem;
+}
+
+.mypage-input__input {
+  width: 27.3125rem;
+  height: 2.5rem;
+  border-radius: 0.3125rem;
+  border: 1px solid #d3d3d3;
+  margin-left: 0.25rem;
+  padding-left: 1rem;
+  color: #3f3f3f;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.error__message {
+  display: block;
+  color: #ff885e;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-left: 0.25rem;
+}
+
+.error__message-name {
+  display: flex;
+  justify-content: center;
+  color: #ff885e;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-left: 0.25rem;
+}

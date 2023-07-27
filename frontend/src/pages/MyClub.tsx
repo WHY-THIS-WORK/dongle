@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
 import SelectBar from "../components/mypage/Selectbar";
 import Header from "../components/header/Header";
-import MyProfile from "../components/mypage/MyProfile";
 import "../css/mypage.css";
+import MypageClub from "../components/mypage/MypageClub";
 
-const Mypage = () => {
-  const [selected, setSelected] = useState(false);
+const MyClub = () => {
+  const [selected, setSelected] = useState(true);
 
   const selectHandler = () => {
-    if (!selected) {
+    if (selected) {
       setSelected(true);
-      window.location.href = "/mypage/myclub";
+      window.location.href = "/mypage/profile";
     }
   };
 
@@ -21,11 +20,11 @@ const Mypage = () => {
       <div className="mypage">
         <div className="mypage-container">
           <SelectBar selectHandler={selectHandler} selected={selected} />
-          <MyProfile />
+          <MypageClub />
         </div>
       </div>
     </>
   );
 };
 
-export default Mypage;
+export default MyClub;
