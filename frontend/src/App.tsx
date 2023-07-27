@@ -7,16 +7,18 @@ import Signup from "./pages/Signup";
 import Detail from "./pages/Detail";
 import Clubjoin from "./pages/Clubjoin";
 import Club from "./pages/Club";
+import MyClub from "./pages/MyClub";
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
-          <Route path='/mypage' element={<Mypage />} />
+          <Route path="/mypage/profile" element={<Mypage />} />
+          <Route path="/mypage/myclub" element={<MyClub />} />
           <Route path='/detail/:id' element={<Detail />} />
           <Route path='/clubjoin' element={<Clubjoin />} />
           <Route path='/club' element={<Club />} />

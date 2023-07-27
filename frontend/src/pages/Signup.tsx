@@ -135,7 +135,7 @@ const SignUp = () => {
     }
   };
 
-  const onSubmitHandler = (event) => {
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
     if (isId && isIdChecked && isPwd && isPwd2 && isName && isEmail && isTel) {
       const sha256Pwd = SHA256(pwd).toString();
@@ -146,7 +146,13 @@ const SignUp = () => {
         email: email,
         tel: tel,
       };
-      console.log(body);
+      await fetch("/signup.json", {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
     } else if (!isId) {
       idRef.current.focus();
       setIdMessage("아이디를 입력해주세요.");
