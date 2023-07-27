@@ -16,14 +16,10 @@ public class Category implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;// 카테고리 id
+    @Column(name = "id", insertable = false, updatable = false)
+    private int id;
 
-    @JoinColumn(name = "category_num")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Club categoryNum;
-
-    @Column(name = "category")
+    @Column(name = "category", insertable = false, updatable = false)
     private String category;// 카테고리
 
 

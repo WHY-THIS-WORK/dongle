@@ -24,7 +24,7 @@ public class Board {
     private int boardId;// 게시글Id
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "club_id")
+    @JoinColumn(name = "club_id", insertable = false, updatable = false)
     private Club clubId;//동아리게시판->게시판Id
 
     @Column(name = "board_name")
