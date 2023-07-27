@@ -27,3 +27,20 @@
   font-weight: 600;
   line-height: normal;
 }
+
+.error__message {
+  display: block;
+  color: #ff885e;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-left: 0.25rem;
+}
+
+.error__message-name {
+  display: flex;
+  justify-content: center;
+  color: #ff885e;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-left: 0.25rem;
+}

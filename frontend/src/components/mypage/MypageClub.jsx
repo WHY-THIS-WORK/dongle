@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../css/mypageMain.css";
 import ActiveClub from "./ActiveClub";
 import MypageClubEditBtn from "./MypageClubEditBtn";
@@ -45,6 +45,16 @@ const MypageClub = () => {
       isValid: 0,
     },
   ];
+
+  useEffect(() => {
+    const getUsersMyClub = async () => {
+      const response = await fetch("/users_myclub.json");
+      const data = await response.json();
+      console.log(data);
+    };
+    getUsersMyClub();
+  }, []);
+
   return (
     <div className="mypage-main">
       <div className="mypage-main__title">내 동아리</div>

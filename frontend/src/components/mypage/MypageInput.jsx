@@ -8,12 +8,14 @@ const MypageInput = (props) => {
       <input
         type="text"
         id="name"
+        maxLength={props.max}
         className="mypage-input__input"
         value={props.info}
         onChange={props.onChangeHandler}
         disabled={!props.edit}
         onKeyUp={props.onKeyUpHandler}
       />
+      {<span className="error__message">{props.message}</span>}
     </div>
   );
 };
