@@ -38,13 +38,12 @@ public class ClubController {
     @PostMapping("/{clubid}")
     public int boardSubmit(@RequestBody Board board) {
         // 동아리별 게시글 불러와서 게시글 신규작성
-
         return 1;
     }
+
     @GetMapping("/{clubId}")
     public Optional<Club> getMainOneClub(@PathVariable("clubId") int clubId) {
         // 동아리 상페페이지 화면으로 이동 GET /club/{clubId}
-        log.info(String.valueOf(clubId));
         return clubService.ClubOne(clubId);
     }
 }
