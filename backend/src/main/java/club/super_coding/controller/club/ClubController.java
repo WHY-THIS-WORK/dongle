@@ -35,15 +35,15 @@ public class ClubController {
         return boards;
     }*/
 
-    @PostMapping("/{clubid}")
-    public int boardSubmit(@RequestBody Board board) {
+/*    @PostMapping("/{clubid}")
+    public int boardSubmit(@PathVariable(name = "clubid") int clubid, @RequestBody Board board) {
         // 동아리별 게시글 불러와서 게시글 신규작성
         return 1;
-    }
+    }*/
 
-    @GetMapping("/{clubId}")
-    public Optional<Club> getMainOneClub(@PathVariable("clubId") int clubId) {
+    @GetMapping("/{clubid}")
+    public Optional<Club> getMainOneClub(@PathVariable("clubid") int clubid) {
         // 동아리 상페페이지 화면으로 이동 GET /club/{clubId}
-        return clubService.ClubOne(clubId);
+        return clubService.ClubOne(clubid);
     }
 }

@@ -1,11 +1,9 @@
 package club.super_coding.controller.board_post;
 
 import club.super_coding.dto.BoardPostDto;
-import club.super_coding.entity.BoardPost;
 import club.super_coding.service.BoardPostService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
