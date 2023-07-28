@@ -7,8 +7,9 @@ const Table = styled.table`
 const TableWrapper = styled.div`
   position: relative;
   margin: 0;
-  width: 1225px;
-  height: 810px;
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
   background-color: pink;
   overflow: hidden;
 `;
