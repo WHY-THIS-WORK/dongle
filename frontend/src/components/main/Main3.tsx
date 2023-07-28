@@ -1,5 +1,19 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import '../../css/main3.css';
+import ClubCard from "./ClubCard";
+
+interface CardItem {
+  category: number;
+  clubId: number;
+  deleted: number;
+  name: string;
+  boardName: string;
+  description: string;
+  direction: string;
+  
+}
 
 const Main3 = () => {
 
@@ -8,10 +22,25 @@ const Main3 = () => {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  console.log('containerRef', containerRef);
-  console.log('isDragging', isDragging);
-  console.log('startX', startX);
-  console.log('scrollLeft', scrollLeft);
+  const navigate = useNavigate();
+
+  const [cardList, setCardList] = useState < CardItem[]>([]);
+  console.log('cardList', cardList);
+
+  useEffect(() => {
+    axios.get('http://52.78.248.174:5173/')
+    .then((res)=>{
+      setCardList(res.data);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  }, [])
+
+  // console.log('containerRef', containerRef);
+  // console.log('isDragging', isDragging);
+  // console.log('startX', startX);
+  // console.log('scrollLeft', scrollLeft);
 
   const onDragStart = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault();
@@ -29,6 +58,10 @@ const Main3 = () => {
   const onDragEnd = () => {
     setIsDragging(false);
   };
+
+  const main3BtnHandle = () => {
+    navigate('/club')
+  }
   
   return (
     <div className='main3'>
@@ -43,7 +76,7 @@ const Main3 = () => {
         </div>
         <div className='main3_subtitle'>
           <span>이미 만들어진 동아리에 참여해도 OK!</span>
-          <div className='main3_btn'>
+          <div className='main3_btn' onClick={() => main3BtnHandle()}>
             <span>더 많은 동아리 보러가기</span>
           </div>
         </div>
@@ -58,16 +91,9 @@ const Main3 = () => {
         ref={containerRef}
       >
         <div className='main3_cards_container'>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
-          <div className="main3_card"></div>
+          {cardList?.map((item, index) => (
+            <ClubCard key={index} {...item} />
+          ))}
         </div>
       </div>
     </div>
