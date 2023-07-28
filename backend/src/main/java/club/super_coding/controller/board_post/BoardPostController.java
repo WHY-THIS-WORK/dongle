@@ -43,6 +43,16 @@ public class BoardPostController {
         System.out.println("post = " + post);
         return post;
     }
+
+    @PostMapping("/{boardId}/{postId}")
+    public BoardPost updatePost(@RequestBody BoardPostDto boardPost, @PathVariable Integer boardId, @PathVariable Integer postId) {
+        // dto로 받는 걸로 바꾸고 values 보내서 받으면 될듯
+        System.out.println("boardId = " + boardId);
+        System.out.println("postId = " + postId);
+        BoardPost post = boardPostService.updatePost(boardId, postId);
+        System.out.println("post = " + post);
+        return post;
+    }
 }
 
 

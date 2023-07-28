@@ -16,6 +16,17 @@ export default function Board({ testBoardId }: Props) {
 
   const [posts, setPosts] = useState([]);
 
+  const [detailPost, setDetailPost] = useState({
+    id: 0,
+    boardId: 0,
+    memberId: 0,
+    title: "",
+    contents: "",
+    insertDate: "",
+    updateDate: "",
+    deleted: 0,
+  });
+
   useEffect(() => {
     (async (): Promise<any> => {
       await getPosts(testBoardId, setPosts);
@@ -27,11 +38,11 @@ export default function Board({ testBoardId }: Props) {
       {isWrite ? (
         <BoardWrite testBoardId={testBoardId} setPosts={setPosts} setIsWrite={setIsWrite} />
       ) : isUpdate ? (
-        <BoardUpdate setIsUpdate={setIsUpdate} />
+        <BoardUpdate detailPost={detailPost} setPosts={setPosts} setIsUpdate={setIsUpdate} />
       ) : isDetail ? (
-        <BoardDetail setIsDetail={setIsDetail} setIsUpdate={setIsUpdate} />
+        <BoardDetail detailPost={detailPost} setIsDetail={setIsDetail} setIsUpdate={setIsUpdate} />
       ) : (
-        <BoardList posts={posts} setIsDetail={setIsDetail} setIsWrite={setIsWrite} />
+        <BoardList setDetailPost={setDetailPost} posts={posts} setIsDetail={setIsDetail} setIsWrite={setIsWrite} />
       )}
     </>
   );

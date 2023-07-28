@@ -2,41 +2,28 @@ import { styled } from "styled-components";
 import { Table, TableWrapper } from "./Board.styled";
 import { mposts } from "./Board.mock";
 import axios from "axios";
-
-interface Posts {
-  id: number;
-  boardId: number;
-  memberId: number;
-  title: string;
-  contents: string;
-  insertDate: string;
-  updateDate: string;
-  deleted: number;
-}
+import { Post } from "./Post.interface";
 
 interface Props {
-  posts: Posts[];
+  setDetailPost(param: object): void;
+  posts: Post[];
   setIsDetail(param: boolean): void;
   setIsWrite(param: boolean): void;
 }
 
-export default function BoardList({ posts, setIsDetail, setIsWrite }: Props) {
+export default function BoardList({ setDetailPost, posts, setIsDetail, setIsWrite }: Props) {
   const tableHeadList = ["번호", "제목", "작성자", "작성일"];
 
-  const showDetail = (e) => {
+  const showDetail = (e: React.SyntheticEvent) => {
     const td = e.target;
     const tdId = td.parentNode.firstChild;
     const postId = parseInt(tdId.textContent);
-    console.log(tdId.textContent);
-
     const boardId = String(posts[0].boardId);
-    console.log(boardId);
-    const url = `http://localhost:5714/club/board/${boardId}/${postId}`;
-    console.log(url);
-    axios.get(url).then((res) => {
+    axios.get(`http://localhost:5174/club/board/${boardId}/${postId}`).then((res) => {
       console.log(res.data);
+      setDetailPost(res.data);
+      setIsDetail(true);
     });
-    // setIsDetail(true);
   };
 
   return (
