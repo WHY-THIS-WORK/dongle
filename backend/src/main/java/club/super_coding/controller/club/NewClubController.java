@@ -21,12 +21,6 @@ public class NewClubController {
     @Autowired
     ClubService clubService;
 
-
-    @GetMapping("/newclub")
-    public String getClubAllList() { // 동아리 신청 화면으로 이동 GET /newclub
-        return "newclub";
-    }
-
     // 동아리 신청 POST /newclub
     @PostMapping("/newclub")
     public Club postNewClub(@RequestBody Club club) {//동아리 신청 POST /newclub

@@ -1,19 +1,18 @@
 package club.super_coding.controller.board;
 
+
 import club.super_coding.entity.Board;
 import club.super_coding.service.BoardService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
 
 @Slf4j
-@RequestMapping
-@RestController("/club")
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/board")
 public class BoardController {
-    @Autowired
     BoardService boardService;
 
 
@@ -29,10 +28,11 @@ public class BoardController {
     }*/
 
     // 동아리별 게시글 불러와서 게시글 id를 통해 맞는 게시글 신규작성
-    @PostMapping("/{clubid}")
-    public int boardSubmit(@RequestBody Board board) {
+    @PostMapping("/{boardid}")
+    public Board boardSubmit(@PathVariable(name = "boardid") int boardid, @RequestBody Board board) {
+// 클럽아이디 받아서 게시글에 포함시켜야함
+        return boardService.postBaord(board);
 
-        return 1;
     }
 
 }

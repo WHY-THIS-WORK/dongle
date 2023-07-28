@@ -3,10 +3,13 @@ import * as React from "react";
 import "../css/login.css";
 import MoveToSignupBtn from "../components/login/MoveToSignupBtn";
 import LoginInput from "../components/login/LoginInput";
-import Header from "../components/header/Header";
+import Header2 from "../components/header/Header2";
 import LoginSubmitBtn from "../components/login/LoginSubmitBtn";
+import { useRecoilState } from "recoil";
+import { LoginState } from "../recoil/atoms/LoginState";
 
 const Login = (): React.ReactElement => {
+  const [isLogin, setIsLogin] = useRecoilState<boolean>(LoginState);
   // 사용자 입력 상태 저장
   const [id, setId] = React.useState<string>("");
   const [pwd, setPwd] = React.useState<string>("");
@@ -42,7 +45,8 @@ const Login = (): React.ReactElement => {
     }
   };
 
-  const onSubmitHandler = async () => {
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
     if (isId && isPwd) {
       const sha256Pwd = SHA256(pwd).toString();
 
@@ -51,13 +55,25 @@ const Login = (): React.ReactElement => {
         pwd: sha256Pwd,
       };
 
-      await fetch("/login.json", {
+      await fetch("http://52.78.248.174:5173/login.json", {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
           "Content-Type": "application/json",
         },
-      });
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            window.alert("로그인 되었습니다!");
+            setIsLogin(true);
+            window.localStorage.setItem("accessToken", id);
+            window.location.href = "/";
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
       // axios
       //   .post("/login", body)
       //   .then((res) => {
@@ -85,7 +101,7 @@ const Login = (): React.ReactElement => {
 
   return (
     <div className="login">
-      <Header />
+      <Header2 />
       <form onSubmit={onSubmitHandler}>
         <div className="login__form">
           <div className="login__title">로그인</div>
