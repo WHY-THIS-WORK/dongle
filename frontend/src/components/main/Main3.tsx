@@ -5,7 +5,7 @@ import '../../css/main3.css';
 import ClubCard from "./ClubCard";
 
 interface CardItem {
-  category: number;
+  category: { id: number, category: string };
   clubId: number;
   deleted: number;
   name: string;
@@ -25,7 +25,6 @@ const Main3 = () => {
   const navigate = useNavigate();
 
   const [cardList, setCardList] = useState < CardItem[]>([]);
-  console.log('cardList', cardList);
 
   useEffect(() => {
     axios.get('http://52.78.248.174:5173/')
