@@ -3,11 +3,14 @@ import { TableWrapper } from "./Board.styled";
 import axios from "axios";
 
 interface Props {
+  testBoardId: number;
   setIsWrite(param: boolean): void;
 }
 
-export default function BoardWrite({ setIsWrite }: Props) {
+export default function BoardWrite({ testBoardId, setIsWrite }: Props) {
   const [values, setValues] = useState({
+    memberId: 321,
+    boardId: testBoardId,
     title: "",
     contents: "",
   });
@@ -26,6 +29,7 @@ export default function BoardWrite({ setIsWrite }: Props) {
     // const json = JSON.stringify(values, null, 2);
     await axios.post("http://localhost:5174/club/board", values).then((res) => {
       console.log(res);
+      if (res.data === "suc") setIsWrite(false);
     });
   };
 

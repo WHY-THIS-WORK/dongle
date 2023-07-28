@@ -3,23 +3,18 @@ import { Table, TableWrapper } from "./Board.styled";
 import { posts } from "./Board.mock";
 
 interface Props {
-  gposts: string;
   setIsDetail(param: boolean): void;
   setIsWrite(param: boolean): void;
 }
 
-export default function BoardList({ gposts, setIsDetail, setIsWrite }: Props) {
+export default function BoardList({ setIsDetail, setIsWrite }: Props) {
   const tableHeadList = ["번호", "제목", "작성자", "작성일"];
 
   return (
     <>
       <TableWrapper>
         <Table>
-          <caption>
-            게시판이름{/*board.name*/}
-            {gposts}
-          </caption>
-
+          <caption>게시판이름</caption>
           <colgroup>
             <col width='10%' />
             <col width='*' />

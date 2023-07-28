@@ -9,12 +9,23 @@ interface Props {
   testBoardId: number;
 }
 
+interface PostsArr {
+  id: number;
+  boardId: number;
+  memberId: number;
+  title: string;
+  contents: string;
+  insertDate: string;
+  updateDate: string;
+  deleted: number;
+}
+
 export default function Board({ testBoardId }: Props) {
   const [isDetail, setIsDetail] = useState(false);
   const [isWrite, setIsWrite] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
 
-  const [gposts, setPosts] = useState("");
+  const [gposts, setPosts] = useState([]);
 
   useEffect(() => {
     (async (): Promise<any> => {
@@ -24,9 +35,11 @@ export default function Board({ testBoardId }: Props) {
 
   const getPosts = async (boardId: number) => {
     await axios.get(`http://localhost:5174/club/board/${boardId}`).then((res) => {
-      if (res.data === `success${boardId}`) {
-        const str = res.data;
-        setPosts(str);
+      if (res.data.length) {
+        const arr = [...res.data];
+        console.log(arr);
+      } else {
+        console.log("emptyboard");
       }
     });
   };
@@ -34,13 +47,13 @@ export default function Board({ testBoardId }: Props) {
   return (
     <>
       {isWrite ? (
-        <BoardWrite setIsWrite={setIsWrite} />
+        <BoardWrite testBoardId={testBoardId} setIsWrite={setIsWrite} />
       ) : isUpdate ? (
         <BoardUpdate setIsUpdate={setIsUpdate} />
       ) : isDetail ? (
         <BoardDetail setIsDetail={setIsDetail} setIsUpdate={setIsUpdate} />
       ) : (
-        <BoardList gposts={gposts} setIsDetail={setIsDetail} setIsWrite={setIsWrite} />
+        <BoardList setIsDetail={setIsDetail} setIsWrite={setIsWrite} />
       )}
     </>
   );

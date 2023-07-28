@@ -12,7 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BoardPostDto {
 
-    private int id;
+    private Integer id;
+    private Integer boardId;
+    private String memberId;
     private String title;
     private String contents;
 }
