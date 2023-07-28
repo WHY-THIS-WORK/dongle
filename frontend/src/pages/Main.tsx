@@ -18,11 +18,7 @@ const Main = () => {
   const outerDivRef = useRef<HTMLDivElement>(null);
   const [scrollIndex, setScrollIndex] = useState<number>(1);
 
-<<<<<<< HEAD
-  console.log("scrollIndex", scrollIndex);
-=======
   // console.log('scrollIndex', scrollIndex);
->>>>>>> 19a8be570bc3d667a900e9c61c77ac7f6c4aa063
 
   useEffect(() => {
     const wheelHandler = (e: WheelEvent) => {
