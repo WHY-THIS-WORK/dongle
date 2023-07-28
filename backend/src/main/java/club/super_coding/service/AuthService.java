@@ -68,7 +68,7 @@ public class AuthService {
 
         member.setPassword("");
 
-        String token = tokenProvider.create(loginId);
+        String token = tokenProvider.create(member);
         int exprTime = 3_600_000;
 
         SignInResponseDto signInResponseDto = new SignInResponseDto(token, exprTime, member);
