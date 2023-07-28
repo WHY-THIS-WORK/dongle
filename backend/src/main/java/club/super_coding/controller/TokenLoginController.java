@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class TokenLoginController {
 
 
-    @GetMapping("/")
+/*    @GetMapping("/")
     public String getBoard(String userEmail){
 
         return "로그인된 사용자는 " + userEmail +"입니다.";
-    }
+    }*/
 }

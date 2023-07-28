@@ -1,7 +1,7 @@
 package club.super_coding.entity.clubbard;
 
 import club.super_coding.entity.Club;
-import club.super_coding.entity.MemberEntity;
+import club.super_coding.entity.Member;
 
 import javax.persistence.*;
 
@@ -19,7 +19,7 @@ public class ClubMemer {
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("memberId")
     @JoinColumn(name = "member_id")
-    private MemberEntity member;
+    private Member member;
 
 
 }
