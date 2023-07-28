@@ -10,8 +10,6 @@ import { LoginState } from "../../recoil/atoms/LoginState";
 const MyProfile = () => {
   const [isLogin, setIsLogin] = useRecoilState(LoginState);
 
-  const [image, setImage] = useState("");
-
   const [name, setName] = useState("닉네임");
   const [email, setEmail] = useState("TEST@TEST.com");
   const [tel, setTel] = useState("010-1234-1234");
@@ -133,6 +131,10 @@ const MyProfile = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
+          xhrFields: {
+            // CORS 문제 우회해서 헤더 넘겨주기
+            withCredentials: true,
+          },
         },
       }).then((res) => {
         const data = res.json();
@@ -206,7 +208,6 @@ const MyProfile = () => {
     <div className="mypage-main">
       <div className="mypage-main__title">회원정보</div>
       <ProfileBlock
-        image={image}
         name={name}
         onChangeNameHandler={onChangeNameHandler}
         message={nameMessage}

@@ -11,7 +11,7 @@ import "../css/clubjoin.css";
 interface input{
   memberId?: string,
   name: string,
-  category: string,
+  category: {id:number },
   description: string,
   direction: string,
   boardName: string
@@ -21,9 +21,9 @@ const Clubjoin = () => {
 
   const [clubJoinInput, setClubJoinInput] = useState<input>(
     {
-      memberId: '',
+      // memberId: '',
       name : '',
-      category: '',
+      category: {'id':1},
       description: '',
       direction: '',
       boardName: '',
@@ -37,7 +37,7 @@ const Clubjoin = () => {
   }
   
   const sendBtnHandle=()=>{
-    axios.post('/newclub', {
+    axios.post('http://52.78.248.174:5173/newclub', {
       clubJoinInput
     })
       .then((res) => {
