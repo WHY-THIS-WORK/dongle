@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { TableWrapper } from "./Board.styled";
+import axios from "axios";
 
 interface Props {
   setIsWrite(param: boolean): void;
 }
 
 export default function BoardWrite({ setIsWrite }: Props) {
-  const handleSubmit = (e: React.FormEvent) => {
-    //제출
+  const [values, setValues] = useState({
+    title: "",
+    contents: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent) => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("제출");
-    //axios.post('url', formData) -> api 로직 분리
+
+    // alert(JSON.stringify(values, null, 2));
+    // const json = JSON.stringify(values, null, 2);
+    await axios.post("http://localhost:5174/club/board", values).then((res) => {
+      console.log(res);
+    });
   };
 
   return (
@@ -22,10 +38,10 @@ export default function BoardWrite({ setIsWrite }: Props) {
           <form onSubmit={handleSubmit}>
             <label htmlFor='title'>제목</label>
             <br />
-            <input type='text' />
+            <input type='text' name='title' value={values.title} onChange={handleChange} />
             <br />
             <label htmlFor='contents'>내용</label>
-            <textarea id='contents' />
+            <textarea id='contents' name='contents' value={values.contents} onChange={handleChange} />
             <button type='submit'>글쓰기</button>
           </form>
         </div>

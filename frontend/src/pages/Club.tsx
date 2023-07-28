@@ -3,6 +3,7 @@ import Header from "../components/header/Header";
 import { styled } from "styled-components";
 
 export default function Club() {
+  const testBoardId = 123;
   return (
     <>
       <div className='club'>
@@ -11,7 +12,7 @@ export default function Club() {
           <Vertical>
             <ClubSideBar>ClubSideBar 나와야 하고</ClubSideBar>
             <BoardComponent>
-              <Board />
+              <Board testBoardId={testBoardId} />
             </BoardComponent>
           </Vertical>
         </ClubWrapper>
