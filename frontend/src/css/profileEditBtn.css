@@ -1,0 +1,20 @@
+.mypage-profile-edit {
+  margin-top: 3rem;
+  width: 27.3125rem;
+  height: 3.1875rem;
+}
+
+.mypage-profile-edit__btn {
+  width: 27.3125rem;
+  height: 3.1875rem;
+  border-radius: 0.3125rem;
+  background: #ff8256;
+  color: #fff;
+  text-align: center;
+  font-family: inherit;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 0.4rem;
+}

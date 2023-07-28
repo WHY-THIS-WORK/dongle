@@ -1,6 +1,6 @@
-import React, { forwardRef } from "react";
+import * as React from "react";
 
-const LoginInput = forwardRef((props, ref) => {
+const LoginInput = React.forwardRef((props, ref) => {
   return (
     <div className="login__form-block">
       <label className="login__form-title">{props.title}</label>
