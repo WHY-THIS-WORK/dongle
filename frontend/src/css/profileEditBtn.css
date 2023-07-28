@@ -2,12 +2,14 @@
   margin-top: 3rem;
   width: 27.3125rem;
   height: 3.1875rem;
+  padding-right: 1.5rem;
+  border-radius: 0.3125rem;
+  margin-left: 0.8rem;
 }
 
 .mypage-profile-edit__btn {
-  width: 27.3125rem;
+  width: 100%;
   height: 3.1875rem;
-  border-radius: 0.3125rem;
   background: #ff8256;
   color: #fff;
   text-align: center;
@@ -16,5 +18,8 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  margin-left: 0.4rem;
+}
+
+.mypage-profile-edit__btn:hover {
+  border: none;
 }

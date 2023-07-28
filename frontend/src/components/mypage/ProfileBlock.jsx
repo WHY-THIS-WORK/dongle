@@ -1,23 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "../../css/mypageProfile.css";
+import { CgProfile } from "react-icons/cg";
 
 const ProfileBlock = (props) => {
-  const [nameEdit, setNameEdit] = useState(false);
-
-  const onChangeProfileHandler = () => {
-    setNameEdit(true);
-  };
-
-  const onKeyPressProfileHandler = (event) => {
-    if (event.key === "Enter" && props.isName) {
-      setNameEdit(false);
-    }
-  };
-
   return (
     <div className="profile-block">
       <div className="profile-block__content">
-        <img className="profile-block__content-img" src={props.image} />
+        <CgProfile className="profile-image" />
       </div>
       <div className="profile-block__content">
         <input
@@ -25,12 +14,12 @@ const ProfileBlock = (props) => {
           className="profile-block__content-nickname"
           value={props.name}
           onChange={props.onChangeNameHandler}
-          disabled={!nameEdit}
-          onKeyUp={onKeyPressProfileHandler}
+          disabled={!props.nameEdit}
+          onKeyUp={props.onNameKeyUpHandler}
         />
         <button
           className="profile-block__content-editbtn"
-          onClick={onChangeProfileHandler}
+          onClick={props.onNameEditHandler}
         >
           수정
         </button>
