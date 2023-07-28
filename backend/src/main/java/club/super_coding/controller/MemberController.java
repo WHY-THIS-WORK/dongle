@@ -1,5 +1,6 @@
 package club.super_coding.controller;
 
+import club.super_coding.entity.MemberEntity;
 import club.super_coding.repository.MemberRepository;
 import club.super_coding.service.MemberService;
 import lombok.RequiredArgsConstructor;
