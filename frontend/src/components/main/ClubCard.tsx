@@ -24,7 +24,7 @@ const ClubCard = (props: CardItem) => {
     console.log('clubId',props.clubId)
 
     const moveDetailHandle=()=>{
-        navigate(`/detail/${props.clubId}`)
+        navigate(`/detail/${props.clubId}`, { state: 1 })
     }
 
     return (
