@@ -66,7 +66,7 @@ const Login = (): React.ReactElement => {
           if (res.status === 200) {
             window.alert("로그인 되었습니다!");
             setIsLogin(true);
-            window.localStorage.setItem("토큰", id);
+            window.localStorage.setItem("accessToken", id);
             window.location.href = "/";
           }
         })
