@@ -54,16 +54,26 @@ const SignUp = () => {
     }
   };
 
-  const onIdCheckHandler = (userId) => {
-    console.log(userId);
-    let res = true;
-    if (res === true) {
-      setIdMessage("사용 가능한 아이디입니다.");
-      setIsIdChecked(true);
-    } else {
-      setIdMessage("중복된 아이디입니다.");
-      setIsIdChecked(false);
-    }
+  const onIdCheckHandler = async (userId) => {
+    const checkId = {
+      id: userId,
+    };
+    await fetch("http://52.78.248.174:5173/signup.json", {
+      method: "POST",
+      body: JSON.stringify(checkId),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      if (res.status === 200) {
+        console.log(res.status);
+        setIdMessage("사용 가능한 아이디입니다.");
+        setIsIdChecked(true);
+      } else {
+        setIdMessage("중복된 아이디입니다.");
+        setIsIdChecked(false);
+      }
+    });
   };
 
   const onPwdChangeHandler = useCallback((event) => {
@@ -142,16 +152,20 @@ const SignUp = () => {
       let body = {
         id: id,
         pwd: sha256Pwd,
+        pwd2: sha256Pwd,
         name: name,
         email: email,
         tel: tel,
       };
-      await fetch("/signup.json", {
+      console.log(body);
+      await fetch("http://52.78.248.174:5173/signup.json", {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
           "Content-Type": "application/json",
         },
+      }).then((res) => {
+        console.log(res.status);
       });
     } else if (!isId) {
       idRef.current.focus();
