@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "../../css/mypageProfile.css";
+import { CgProfile } from "react-icons/cg";
 
 const ProfileBlock = (props) => {
   return (
     <div className="profile-block">
       <div className="profile-block__content">
-        <img className="profile-block__content-img" src={props.image} />
+        <CgProfile className="profile-image" />
       </div>
       <div className="profile-block__content">
         <input
