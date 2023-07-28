@@ -1,7 +1,6 @@
 package club.super_coding.security;
 
 
-import club.super_coding.entity.Member;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -24,14 +23,8 @@ public class TokenProvider {
 
     //검증을 위한 키 및 JWT 생성
     private static final String SECURITY_KEY = "jwtseckey!@";
-
-
-    //JWT 생성하는 매서드
-    public String create(Member member) {
-        Claims claims = Jwts.claims();
-        claims.put("Id", member.getMemberId()); //담고 싶은 값
-        claims.put("email", member.getEmail()); //담고 싶은 값
-        claims.put("phone", member.getPhone()); //담고 싶은 값
+   //JWT 생성하는 매서드
+    public String create(String memberId) {
         //JWT 만료날짜 현재 날짜 +1시간으로 설정
        Date exprTime = (Date) Date.from(Instant.now().plus(1,ChronoUnit.HOURS));
         //JWT 생성
@@ -39,20 +32,17 @@ public class TokenProvider {
                 //암호화에 사용 될 알고리즘,키
                 .signWith(SignatureAlgorithm.HS512, SECURITY_KEY)
                 //JWT 제목 , 생성일 , 만료일
-                .setSubject(member.getMemberId())
-                .setIssuedAt(new java.util.Date())
-                .setExpiration(exprTime)
-                .setClaims(claims)
+                .setSubject(memberId).setIssuedAt(new java.util.Date()).setExpiration(exprTime)
                 //생성
                 .compact();
     }
 
     //JWT 검증
-    public static boolean validate (String token){
+    public String validate (String token){
         //매개변수로 받은 token을 키를 사용해서 복보화 (디코딩)
         Claims claims = Jwts.parser().setSigningKey(SECURITY_KEY)
                 .parseClaimsJws(token).getBody();
         //디코딩된 토큰의 payload에서 제목을 가져옴
-        return Boolean.parseBoolean(claims.getSubject());
+        return claims.getSubject();
     }
 }
