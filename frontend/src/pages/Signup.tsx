@@ -4,7 +4,7 @@ import IdCheck from "../components/signup/IdCheck";
 import "../css/signup.css";
 import SignupInput from "../components/signup/SignupInput";
 import SignupSubmitBtn from "../components/signup/SignupSubmitBtn";
-import Header from "../components/header/Header";
+import Header2 from "../components/header/Header2";
 
 const SignUp = () => {
   // 사용자 입력 상태 저장
@@ -54,16 +54,26 @@ const SignUp = () => {
     }
   };
 
-  const onIdCheckHandler = (userId) => {
-    console.log(userId);
-    let res = true;
-    if (res === true) {
-      setIdMessage("사용 가능한 아이디입니다.");
-      setIsIdChecked(true);
-    } else {
-      setIdMessage("중복된 아이디입니다.");
-      setIsIdChecked(false);
-    }
+  const onIdCheckHandler = async (userId) => {
+    const checkId = {
+      id: userId,
+    };
+    await fetch("http://52.78.248.174:5173/signup.json", {
+      method: "POST",
+      body: JSON.stringify(checkId),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      if (res.status === 200) {
+        console.log(res.status);
+        setIdMessage("사용 가능한 아이디입니다.");
+        setIsIdChecked(true);
+      } else {
+        setIdMessage("중복된 아이디입니다.");
+        setIsIdChecked(false);
+      }
+    });
   };
 
   const onPwdChangeHandler = useCallback((event) => {
@@ -135,18 +145,28 @@ const SignUp = () => {
     }
   };
 
-  const onSubmitHandler = (event) => {
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
     if (isId && isIdChecked && isPwd && isPwd2 && isName && isEmail && isTel) {
       const sha256Pwd = SHA256(pwd).toString();
       let body = {
         id: id,
         pwd: sha256Pwd,
+        pwd2: sha256Pwd,
         name: name,
         email: email,
         tel: tel,
       };
       console.log(body);
+      await fetch("http://52.78.248.174:5173/signup.json", {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((res) => {
+        console.log(res.status);
+      });
     } else if (!isId) {
       idRef.current.focus();
       setIdMessage("아이디를 입력해주세요.");
@@ -184,7 +204,7 @@ const SignUp = () => {
 
   return (
     <div className="signup">
-      <Header />
+      <Header2 />
       <form onSubmit={onSubmitHandler}>
         <div className="signup__form">
           <div className="signup__title">회원가입</div>

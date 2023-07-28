@@ -1,31 +1,33 @@
 import { SHA256 } from "crypto-js";
-import axios from "axios";
-import React, { useRef, useState } from "react";
-import MoveToSignupBtn from "../components/login/MoveToSignupBtn";
+import * as React from "react";
 import "../css/login.css";
+import MoveToSignupBtn from "../components/login/MoveToSignupBtn";
 import LoginInput from "../components/login/LoginInput";
-import Header from "../components/header/Header";
+import Header2 from "../components/header/Header2";
 import LoginSubmitBtn from "../components/login/LoginSubmitBtn";
+import { useRecoilState } from "recoil";
+import { LoginState } from "../recoil/atoms/LoginState";
 
-const Login = () => {
+const Login = (): React.ReactElement => {
+  const [isLogin, setIsLogin] = useRecoilState<boolean>(LoginState);
   // 사용자 입력 상태 저장
-  const [id, setId] = useState("");
-  const [pwd, setPwd] = useState("");
+  const [id, setId] = React.useState<string>("");
+  const [pwd, setPwd] = React.useState<string>("");
 
   // 오류메시지 상태 저장
-  const [idMessage, setIdMessage] = useState("");
-  const [pwdMessage, setPwdMessage] = useState("");
+  const [idMessage, setIdMessage] = React.useState<string>("");
+  const [pwdMessage, setPwdMessage] = React.useState<string>("");
 
   // 유효성 검사 상태 저장
-  const [isId, setIsId] = useState(false);
-  const [isPwd, setIsPwd] = useState(false);
+  const [isId, setIsId] = React.useState<boolean>(false);
+  const [isPwd, setIsPwd] = React.useState<boolean>(false);
 
-  const idRef = useRef();
-  const pwdRef = useRef();
+  const idRef = React.useRef() as React.MutableRefObject<HTMLDivElement>;
+  const pwdRef = React.useRef() as React.MutableRefObject<HTMLDivElement>;
 
-  const onIdChangeHandler = (event) => {
-    setId(event.target.value);
-    if (event.target.value.trim().length > 0) {
+  const onIdChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setId(e.target.value);
+    if (e.target.value.trim().length > 0) {
       setIsId(true);
       setIdMessage("");
     } else {
@@ -33,9 +35,9 @@ const Login = () => {
     }
   };
 
-  const onPwdChangeHandler = (event) => {
-    setPwd(event.target.value);
-    if (event.target.value.trim().length > 0) {
+  const onPwdChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPwd(e.target.value);
+    if (e.target.value.trim().length > 0) {
       setIsPwd(true);
       setPwdMessage("");
     } else {
@@ -43,7 +45,7 @@ const Login = () => {
     }
   };
 
-  const onSubmitHandler = (event) => {
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
     if (isId && isPwd) {
       const sha256Pwd = SHA256(pwd).toString();
@@ -52,7 +54,25 @@ const Login = () => {
         id: id,
         pwd: sha256Pwd,
       };
-      console.log(body);
+
+      await fetch("http://52.78.248.174:5173/login.json", {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            window.alert("로그인 되었습니다!");
+            setIsLogin(true);
+            window.localStorage.setItem("accessToken", id);
+            window.location.href = "/";
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
       // axios
       //   .post("/login", body)
@@ -81,7 +101,7 @@ const Login = () => {
 
   return (
     <div className="login">
-      <Header />
+      <Header2 />
       <form onSubmit={onSubmitHandler}>
         <div className="login__form">
           <div className="login__title">로그인</div>

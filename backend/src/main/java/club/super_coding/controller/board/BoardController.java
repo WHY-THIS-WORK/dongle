@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @Slf4j
 @RestController
@@ -17,15 +19,17 @@ public class BoardController {
 
 
     // 게시글 리스트 불러오는 기능 만들어야함 GET /club/1/1
-/*    @GetMapping("/{clubId}/{boardId}")
-    public List<Board> getClubBoardList(@PathVariable("clubId") int clubid, @PathVariable("boardId") int boardId) {
-        List<Board> boards = boardService.AllBoardList();
+/*
+    @GetMapping("/{clubId}")
+    public List<Board> getClubBoardList(@PathVariable("clubId") int clubid) {
+        List<Board> boards = boardService.AllBoardList(clubid);
         log.info("boards" + boards.toString());
         if (boards == null) {
             return null;
         }
         return boards;
-    }*/
+    }
+*/
 
     // 동아리별 게시글 불러와서 게시글 id를 통해 맞는 게시글 신규작성
     @PostMapping("/{boardid}")

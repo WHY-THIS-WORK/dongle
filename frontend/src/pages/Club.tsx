@@ -1,4 +1,5 @@
 import Board from "../components/board";
+import SideBar from "../components/club/SideBar";
 import Header from "../components/header/Header";
 import { styled } from "styled-components";
 
@@ -6,31 +7,37 @@ export default function Club() {
   const testBoardId = 123;
   return (
     <>
-      <div className='club'>
+      <ClubContainer className='club'>
         <Header />
-        <ClubWrapper>
-          <Vertical>
-            <ClubSideBar>ClubSideBar 나와야 하고</ClubSideBar>
+        <ColumnWrapper>
+          <RowWrapper>
+            <ClubSideBar>
+              <SideBar />
+            </ClubSideBar>
             <BoardComponent>
               <Board testBoardId={testBoardId} />
             </BoardComponent>
-          </Vertical>
-        </ClubWrapper>
-      </div>
+          </RowWrapper>
+        </ColumnWrapper>
+      </ClubContainer>
     </>
   );
 }
 
-const ClubWrapper = styled.div`
+const ClubContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+`;
+const ColumnWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 1920px;
-  height: 1080px;
+  width: 100vw;
+  height: 100vh;
   background-color: beige;
 `;
 
-const Vertical = styled.div`
+const RowWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -39,8 +46,6 @@ const Vertical = styled.div`
 const ClubSideBar = styled.div`
   width: 245px;
   height: 810px;
-  color: white;
-  background-color: red;
 `;
 const BoardComponent = styled.div`
   width: 1225px;

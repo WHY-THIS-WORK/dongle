@@ -1,0 +1,30 @@
+.mypage-main {
+  display: block;
+  margin-top: 4.75rem;
+  margin-left: 1rem;
+  width: 77.4375rem;
+  height: 50.0625rem;
+  border: 1.5px solid #e7e7e7;
+}
+
+.mypage-main__title {
+  display: flex;
+  justify-content: center;
+  color: #ff8256;
+  font-family: inherit;
+  font-size: 1.625rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 4rem;
+}
+
+.mypage-input-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.mypage-input-container {
+  display: block;
+}
