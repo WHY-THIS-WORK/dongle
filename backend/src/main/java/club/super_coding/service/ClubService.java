@@ -1,6 +1,9 @@
 package club.super_coding.service;
 
+import club.super_coding.dto.ClubDto;
+import club.super_coding.entity.Category;
 import club.super_coding.entity.Club;
+import club.super_coding.repository.CategoryRepository;
 import club.super_coding.repository.ClubRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,8 @@ public class ClubService {
 
     @Autowired // IoC 컨테이너 빈으로 등록하여 의존성을 주입
     ClubRepository clubRepository;
+    @Autowired
+    CategoryRepository categoryRepository;
 /*
     아래 코드는 위 @Autowired가 붙은 코드와 같은 기능을 한다
     private final ClubRepository clubRepository;
@@ -34,7 +39,14 @@ public class ClubService {
 
 
     @Transactional // @Transactional이 붙은 메서드는 메서드가 포함하고 있는 작업 중에 하나라도 실패할 경우 전체 작업을 취소한다.
-    public Club saveNewClub(Club club) {
+    public Club saveNewClub(ClubDto clubDto) {
+        Optional<Category> byId = categoryRepository.findById(clubDto.getCategory().getId());
+        System.out.println("byId = " + byId);
+        System.out.println("byId = " + byId.get());
+        Club club = new Club(clubDto, byId);
+
+        System.out.println("c = " +club.toString());
+        System.out.println("c = " +club.getCategory().toString());
             return clubRepository.save(club);
     }
 }

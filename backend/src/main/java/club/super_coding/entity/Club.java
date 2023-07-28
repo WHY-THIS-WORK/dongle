@@ -1,16 +1,17 @@
 package club.super_coding.entity;
 
 
-import lombok.AllArgsConstructor;
+import club.super_coding.dto.ClubDto;
+import lombok.*;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
+import java.util.Optional;
 import java.util.Set;
 
+@ToString
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,7 +22,7 @@ public class Club {
     @Id // 이 테이블에 PK를 뜻함
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "club_id")
-    private int clubId;// 동아리ID
+    private Integer clubId;// 동아리ID
 
 
     @JoinColumn(name = "category")
@@ -43,6 +44,15 @@ public class Club {
     @Column
     @ColumnDefault("0")// 동아리 상태값 기본:0 , 삭제:1
     private int deleted;//삭제여부
+
+    @Builder
+    public Club(ClubDto clubDto,  Optional<Category> category){
+        this.category = category.get();
+        this.name = clubDto.getName();
+        this.description = clubDto.getDescription();
+        this.direction = clubDto.getDirection();
+        this.boardName = clubDto.getBoardName();
+    }
 
 
 //    @OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
