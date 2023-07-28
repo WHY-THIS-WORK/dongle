@@ -8,12 +8,6 @@ const ProfileBlock = (props) => {
     setNameEdit(true);
   };
 
-  const onKeyPressProfileHandler = (event) => {
-    if (event.key === "Enter" && props.isName) {
-      setNameEdit(false);
-    }
-  };
-
   return (
     <div className="profile-block">
       <div className="profile-block__content">
@@ -26,7 +20,7 @@ const ProfileBlock = (props) => {
           value={props.name}
           onChange={props.onChangeNameHandler}
           disabled={!nameEdit}
-          onKeyUp={onKeyPressProfileHandler}
+          onKeyUp={props.onNameKeyUpHandler}
         />
         <button
           className="profile-block__content-editbtn"

@@ -123,6 +123,31 @@ const MyProfile = () => {
     }
   };
 
+  const onNameKeyUpHandler = async (event) => {
+    if (event.key === "Enter" && props.isName) {
+      setNameEdit(false);
+      const token = window.localStorage.getItem("accessToken");
+      let body = {
+        name: name,
+        email: email,
+        tel: tel,
+      };
+      await fetch("http://52.78.248.174:5173/modified_profile.json", {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      }).then((res) => {
+        // 응답 받을 부분
+        console.log(res.status);
+      });
+    }
+  };
+
   const onTelKeyUpHandler = async (event) => {
     if (event.key === "Enter" && isTel) {
       setTelEdit(false);
@@ -168,6 +193,7 @@ const MyProfile = () => {
         onChangeNameHandler={onChangeNameHandler}
         message={nameMessage}
         isName={isName}
+        onNameKeyUpHandler={onNameKeyUpHandler}
       />
       <div className="mypage-input-box">
         <div className="mypage-input-container">
