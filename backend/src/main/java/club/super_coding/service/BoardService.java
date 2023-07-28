@@ -17,9 +17,9 @@ public class BoardService {
     BoardRepository boardRepository;
 
     // 동아리별 전체 게시판 출력
-    public List<Board> AllBoardList(int clubId) {
-        return boardRepository.findAllByClubId(clubId);
-
+    public List<Board> AllBoardList(Integer clubId) {
+        List<Board> boards = boardRepository.AllboardList(clubId);
+        return boards;
     }
 
     // 해당 동아리 게시판 작성

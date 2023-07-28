@@ -1,6 +1,25 @@
 import { styled } from "styled-components";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function SideBar() {
+  const [boards, setBoard] = useState([]);
+
+  useEffect(() => {
+    (async (): Promise<any> => {
+      const url = "http://localhost:5174/board/78";
+      await axios.get(url).then((res) => {
+        console.log(res);
+      });
+    })();
+  }, []);
+
+  // const getBoard = async () => {
+  //   await axios.get(`http:localhost:5174/board/${26}`).then((res) => {
+  //     console.log(res);
+  //   });
+  // };
+
   return (
     <SidebarContainer>
       <SidebarInfoDiv>
