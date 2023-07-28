@@ -24,28 +24,48 @@ const MyProfile = () => {
   const [isEmail, setIsEmail] = useState(false);
   const [isTel, setIsTel] = useState(false);
 
+  const [nameEdit, setNameEdit] = useState(false);
   const [emailEdit, setEmailEdit] = useState(false);
   const [telEdit, setTelEdit] = useState(false);
 
   useEffect(() => {
-    if (!isLogin) {
-      window.alert("로그인 해주세요!");
-      window.location.href = "/login";
-      return;
-    } else {
-      const getUsersProfile = async () => {
-        const response = await fetch("http://52.78.248.174:5173/users_profile");
-        const data = await response.json();
-        // 데이터 갈아 끼워줄 부분
-        console.log(data);
-      };
-      getUsersProfile();
+    if (tel.length === 10) {
+      setTel(tel.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
     }
-  }, [isLogin]);
+    if (tel.length === 13) {
+      setTel(
+        tel.replace(/-/g, "").replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
+      );
+    }
+  }, [tel]);
+
+  // useEffect(() => {
+  //   if (!isLogin) {
+  //     window.alert("로그인 해주세요!");
+  //     window.location.href = "/login";
+  //     return;
+  //   } else {
+  //     const getUsersProfile = async () => {
+  //       await fetch("http://52.78.248.174:5173/users_profile").then((res) => {
+  //         const data = res.json();
+  //         data.then((data) => {
+  //           setName(data.memberId);
+  //           setEmail(data.email);
+  //           setTel(data.phone);
+  //         });
+  //       });
+  //     };
+  //     getUsersProfile();
+  //   }
+  // }, [isLogin]);
 
   const onEditHandler = () => {
     setEmailEdit(true);
     setTelEdit(true);
+  };
+
+  const onNameEditHandler = () => {
+    setNameEdit(true);
   };
 
   const onLogOutHandler = () => {
@@ -101,11 +121,11 @@ const MyProfile = () => {
       setEmailEdit(false);
       const token = window.localStorage.getItem("accessToken");
       let body = {
-        name: name,
+        memberId: name,
         email: email,
-        tel: tel,
+        phone: tel,
       };
-      await fetch("http://52.78.248.174:5173/modified_profile.json", {
+      await fetch("http://52.78.248.174:5173/update_profile", {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
@@ -115,22 +135,26 @@ const MyProfile = () => {
           },
         },
       }).then((res) => {
-        // 응답 받을 부분
-        console.log(res.status);
+        const data = res.json();
+        data.then((data) => {
+          if (!data.result) {
+            window.alert("회원 정보를 확인해주세요.");
+          }
+        });
       });
     }
   };
 
   const onNameKeyUpHandler = async (event) => {
-    if (event.key === "Enter" && props.isName) {
+    if (event.key === "Enter" && isName) {
       setNameEdit(false);
       const token = window.localStorage.getItem("accessToken");
       let body = {
-        name: name,
+        memberId: name,
         email: email,
-        tel: tel,
+        phone: tel,
       };
-      await fetch("http://52.78.248.174:5173/modified_profile.json", {
+      await fetch("http://52.78.248.174:5173/update_profile", {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
@@ -140,8 +164,12 @@ const MyProfile = () => {
           },
         },
       }).then((res) => {
-        // 응답 받을 부분
-        console.log(res.status);
+        const data = res.json();
+        data.then((data) => {
+          if (!data.result) {
+            window.alert("회원 정보를 확인해주세요.");
+          }
+        });
       });
     }
   };
@@ -150,12 +178,11 @@ const MyProfile = () => {
     if (event.key === "Enter" && isTel) {
       setTelEdit(false);
       let body = {
-        token: window.localStorage.getItem("accessToken"),
-        name: name,
+        memberId: name,
         email: email,
-        tel: tel,
+        phone: tel,
       };
-      await fetch("http://52.78.248.174:5173/modified_profile.json", {
+      await fetch("http://52.78.248.174:5173/update_profile", {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
@@ -165,22 +192,15 @@ const MyProfile = () => {
           },
         },
       }).then((res) => {
-        // 응답 받을 부분
-        console.log(res.status);
+        const data = res.json();
+        data.then((data) => {
+          if (!data.result) {
+            window.alert("회원 정보를 확인해주세요.");
+          }
+        });
       });
     }
   };
-
-  useEffect(() => {
-    if (tel.length === 10) {
-      setTel(tel.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
-    }
-    if (tel.length === 13) {
-      setTel(
-        tel.replace(/-/g, "").replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
-      );
-    }
-  }, [tel]);
 
   return (
     <div className="mypage-main">
@@ -190,8 +210,9 @@ const MyProfile = () => {
         name={name}
         onChangeNameHandler={onChangeNameHandler}
         message={nameMessage}
-        isName={isName}
+        nameEdit={nameEdit}
         onNameKeyUpHandler={onNameKeyUpHandler}
+        onNameEditHandler={onNameEditHandler}
       />
       <div className="mypage-input-box">
         <div className="mypage-input-container">

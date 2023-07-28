@@ -2,12 +2,6 @@ import React, { useState } from "react";
 import "../../css/mypageProfile.css";
 
 const ProfileBlock = (props) => {
-  const [nameEdit, setNameEdit] = useState(false);
-
-  const onChangeProfileHandler = () => {
-    setNameEdit(true);
-  };
-
   return (
     <div className="profile-block">
       <div className="profile-block__content">
@@ -19,12 +13,12 @@ const ProfileBlock = (props) => {
           className="profile-block__content-nickname"
           value={props.name}
           onChange={props.onChangeNameHandler}
-          disabled={!nameEdit}
+          disabled={!props.nameEdit}
           onKeyUp={props.onNameKeyUpHandler}
         />
         <button
           className="profile-block__content-editbtn"
-          onClick={onChangeProfileHandler}
+          onClick={props.onNameEditHandler}
         >
           수정
         </button>
