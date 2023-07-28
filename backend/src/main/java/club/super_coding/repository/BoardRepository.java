@@ -1,16 +1,20 @@
 package club.super_coding.repository;
 
 import club.super_coding.entity.Board;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RestController;
 
+import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface BoardRepository extends JpaRepository<Board, Integer> {
+
+    @Transactional
+    @Query("select b.boardId as boardId, b.clubId.clubId as clubId,b.boardName as boardName from Board b where b.clubId.clubId = :clubId and b.deleted =0")
+    List<Board> AllboardList(int clubId);
+
+    List<Board> findAllByClubId(int clubId);
 
 }
