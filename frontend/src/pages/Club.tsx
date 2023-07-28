@@ -34,7 +34,7 @@ const ColumnWrapper = styled.div`
   justify-content: space-around;
   width: 100vw;
   height: 100vh;
-  background-color: beige;
+  background-color: #f6f6f6;
 `;
 
 const RowWrapper = styled.div`
@@ -50,6 +50,4 @@ const ClubSideBar = styled.div`
 const BoardComponent = styled.div`
   width: 1225px;
   height: 810px;
-  color: white;
-  background-color: blue;
 `;

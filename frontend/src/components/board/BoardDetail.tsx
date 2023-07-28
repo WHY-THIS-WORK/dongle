@@ -1,5 +1,6 @@
+import { styled } from "styled-components";
 import { getPosts } from "../../apis/board.api";
-import { TableWrapper } from "./Board.styled";
+import { BoardTitle, TableWrapper } from "./Board.styled";
 import { Post } from "./Post.interface";
 import axios from "axios";
 
@@ -26,20 +27,80 @@ export default function BoardDetail({ setPosts, detailPost, setIsDetail, setIsUp
   return (
     <>
       <TableWrapper>
-        <div>
-          <button onClick={showList}>글목록</button>
-          <button onClick={() => setIsUpdate(true)}>수정</button>
-          <button onClick={deletePost}>삭제</button>
-        </div>
-        <div>게시판이름</div>
-        <div>{detailPost.title}</div>
-        <div>
-          <span>{detailPost.memberId}</span>
-          <span>{detailPost.insertDate}</span>
-        </div>
-        <hr />
-        <div>{detailPost.contents}</div>
+        <PostHead>
+          <ButtonDiv>
+            <Button onClick={showList}>글목록</Button>
+            <Button onClick={() => setIsUpdate(true)}>수정</Button>
+            <Button onClick={deletePost}>삭제</Button>
+          </ButtonDiv>
+          <InfoDiv>
+            <BoardTitle>modern_javascript</BoardTitle>
+            <PostTitle>{detailPost.title}</PostTitle>
+            <PostInfoDiv>
+              <PostWriter>{detailPost.memberId}</PostWriter>
+              <PostInsertDate>{detailPost.insertDate}</PostInsertDate>
+            </PostInfoDiv>
+          </InfoDiv>
+        </PostHead>
+        <PostBody>
+          <div>{detailPost.contents}</div>
+        </PostBody>
       </TableWrapper>
     </>
   );
 }
+
+const PostHead = styled.div`
+  width: 100%;
+  height: 15%;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(185, 185, 185, 0.5);
+`;
+
+const ButtonDiv = styled.div`
+  position: absolute;
+  top: 40px;
+  right: 2%;
+`;
+
+const Button = styled.button`
+  margin: 0px 2px;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #ff8256;
+`;
+
+const InfoDiv = styled.div`
+  width: 100%;
+  height: 100%;
+  color: #000;
+`;
+
+const PostTitle = styled.div`
+  margin: 0px 30px;
+  color: #000;
+  font-family: Inter;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
+
+const PostInfoDiv = styled.div`
+  margin-top: 5px;
+  display: flex;
+  align-items: row;
+`;
+
+const PostWriter = styled.div`
+  margin: 0px 30px;
+  color: #acacac;
+`;
+
+const PostInsertDate = styled.div`
+  color: #acacac;
+`;
+
+const PostBody = styled.div`
+  margin: 30px;
+  color: #000;
+`;

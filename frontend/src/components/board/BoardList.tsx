@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { Table, TableWrapper } from "./Board.styled";
+import { BoardTitle, Table, TableWrapper } from "./Board.styled";
 import { mposts } from "./Board.mock";
 import axios from "axios";
 import { Post } from "./Post.interface";
@@ -29,8 +29,8 @@ export default function BoardList({ setDetailPost, posts, setIsDetail, setIsWrit
   return (
     <>
       <TableWrapper>
+        <BoardTitle>modern_javascript</BoardTitle>
         <Table>
-          <caption>게시판이름</caption>
           <colgroup>
             <col width='10%' />
             <col width='*' />
@@ -69,6 +69,7 @@ export default function BoardList({ setDetailPost, posts, setIsDetail, setIsWrit
         </Table>
         <BtnWrapper>
           <Paragraph>{`총 ${mposts.length} 개의 글이 있습니다.`}</Paragraph>
+          <Paragraph>{`총 ${posts.length} 개의 글이 있습니다.`}</Paragraph>
           <WriteBtn onClick={() => setIsWrite(true)}>글쓰기</WriteBtn>
         </BtnWrapper>
       </TableWrapper>
@@ -80,13 +81,19 @@ const BtnWrapper = styled.div`
   position: absolute;
   display: flex;
   justify-content: space-between;
-  background-color: aliceblue;
+  background-color: whitesmoke;
   width: inherit;
   bottom: 0;
+  border-top: 1px solid rgba(185, 185, 185, 0.5);
 `;
 
 const Paragraph = styled.p`
   color: green;
 `;
 
-const WriteBtn = styled.button``;
+const WriteBtn = styled.button`
+  margin-top: 5px;
+  height: 45px;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #ff8256;
+`;
