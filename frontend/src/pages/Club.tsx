@@ -4,6 +4,7 @@ import Header from "../components/header/Header";
 import { styled } from "styled-components";
 
 export default function Club() {
+  const testBoardId = 123;
   return (
     <>
       <ClubContainer className='club'>
@@ -14,7 +15,7 @@ export default function Club() {
               <SideBar />
             </ClubSideBar>
             <BoardComponent>
-              <Board />
+              <Board testBoardId={testBoardId} />
             </BoardComponent>
           </RowWrapper>
         </ColumnWrapper>

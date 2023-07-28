@@ -6,9 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-
 @Slf4j
 @Service
 public class BoardService {
@@ -19,7 +16,12 @@ public class BoardService {
     // 동아리별 전체 게시글 출력
     public int AllBoardList(int club, int boardId) {
 
-       return 1;
+        return 1;
+    }
+
+    // 해당 동아리 게시글 작성
+    public Board postBaord(Board board) {
+        return boardRepository.save(board);
     }
 
 

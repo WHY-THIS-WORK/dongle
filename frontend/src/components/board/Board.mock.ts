@@ -1,4 +1,4 @@
-export const posts = [
+export const mposts = [
   {
     id: 1,
     title: "게시글1",
