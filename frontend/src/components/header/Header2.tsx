@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "../../css/header.css";
 import HeaderBtn from "../header/HeaderBtn";
 
-const Header = () => {
+const Header2 = () => {
   const navigate = useNavigate();
 
   return (
@@ -12,13 +12,13 @@ const Header = () => {
           로고
         </div>
         <div className="header_menu">
-          <HeaderBtn address={"/clubjoin"} text={"동아리 신청"} />
-          <HeaderBtn address={"/detail"} text={"동아리"} />
-          <HeaderBtn address={"/mypage/profile"} text={"MY"} />
+          <HeaderBtn address={"/login"} text={"로그인"} />
+          <HeaderBtn address={"/signup"} text={"회원가입"} />
+          <HeaderBtn address={"/"} text={"홈"} />
         </div>
       </div>
     </header>
   );
 };
 
-export default Header;
+export default Header2;
