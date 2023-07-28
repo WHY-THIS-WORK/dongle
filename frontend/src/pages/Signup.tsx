@@ -58,14 +58,15 @@ const SignUp = () => {
     const checkId = {
       id: userId,
     };
-    await fetch("http://52.78.248.174:5173/signup.json", {
+    await fetch("http://52.78.248.174:5173/id_check", {
       method: "POST",
       body: JSON.stringify(checkId),
       headers: {
         "Content-Type": "application/json",
       },
     }).then((res) => {
-      if (res.status === 200) {
+      const test = true;
+      if (test) {
         console.log(res.status);
         setIdMessage("사용 가능한 아이디입니다.");
         setIsIdChecked(true);
@@ -150,22 +151,28 @@ const SignUp = () => {
     if (isId && isIdChecked && isPwd && isPwd2 && isName && isEmail && isTel) {
       const sha256Pwd = SHA256(pwd).toString();
       let body = {
-        id: id,
-        pwd: sha256Pwd,
-        pwd2: sha256Pwd,
-        name: name,
+        memberId: id,
+        password: sha256Pwd,
+        passwordCheck: sha256Pwd,
+        nickname: name,
         email: email,
-        tel: tel,
+        phone: tel,
       };
       console.log(body);
-      await fetch("http://52.78.248.174:5173/signup.json", {
+      await fetch("http://52.78.248.174:5173/signup", {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
           "Content-Type": "application/json",
         },
       }).then((res) => {
-        console.log(res.status);
+        const data = res.json();
+        data.then((data) => {
+          if (data.result) {
+            window.alert(data.message);
+            window.location.href = "/login";
+          }
+        });
       });
     } else if (!isId) {
       idRef.current.focus();

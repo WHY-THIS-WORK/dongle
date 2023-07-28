@@ -51,11 +51,11 @@ const Login = (): React.ReactElement => {
       const sha256Pwd = SHA256(pwd).toString();
 
       let body = {
-        id: id,
-        pwd: sha256Pwd,
+        loginId: id,
+        loginPassword: sha256Pwd,
       };
 
-      await fetch("http://52.78.248.174:5173/login.json", {
+      await fetch("http://52.78.248.174:5173/login", {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
@@ -63,13 +63,20 @@ const Login = (): React.ReactElement => {
         },
       })
         .then((res) => {
-          if (res.status === 200) {
-            window.alert("로그인 되었습니다!");
-            setIsLogin(true);
-            window.localStorage.setItem("accessToken", id);
-            window.location.href = "/";
-          }
+          const data = res.json();
+          data.then((data) => {
+            if (data.result) {
+              window.alert(data.message);
+              window.location.href = "/";
+              setIsLogin(true);
+              window.localStorage.setItem("accessToken", data.data.token);
+            } else {
+              console.log(data);
+              window.alert(data.message);
+            }
+          });
         })
+
         .catch((error) => {
           console.log(error);
         });
