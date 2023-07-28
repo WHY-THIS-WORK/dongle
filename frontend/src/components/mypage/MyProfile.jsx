@@ -34,9 +34,7 @@ const MyProfile = () => {
       return;
     } else {
       const getUsersProfile = async () => {
-        const response = await fetch(
-          "http://52.78.248.174:5173/users_profile.json"
-        );
+        const response = await fetch("http://52.78.248.174:5173/users_profile");
         const data = await response.json();
         // 데이터 갈아 끼워줄 부분
         console.log(data);
