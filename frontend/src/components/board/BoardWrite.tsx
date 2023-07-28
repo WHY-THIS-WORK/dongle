@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { TableWrapper } from "./Board.styled";
 import axios from "axios";
+import { getPosts } from "../../apis/board.api";
 
 interface Props {
   testBoardId: number;
+  setPosts: Function;
   setIsWrite(param: boolean): void;
 }
 
-export default function BoardWrite({ testBoardId, setIsWrite }: Props) {
+export default function BoardWrite({ testBoardId, setPosts, setIsWrite }: Props) {
   const [values, setValues] = useState({
     memberId: 321,
     boardId: testBoardId,
@@ -25,11 +27,12 @@ export default function BoardWrite({ testBoardId, setIsWrite }: Props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // alert(JSON.stringify(values, null, 2));
-    // const json = JSON.stringify(values, null, 2);
     await axios.post("http://localhost:5174/club/board", values).then((res) => {
       console.log(res);
-      if (res.data === "suc") setIsWrite(false);
+      if (res.data === "suc") {
+        getPosts(values.boardId, setPosts);
+        setIsWrite(false);
+      }
     });
   };
 

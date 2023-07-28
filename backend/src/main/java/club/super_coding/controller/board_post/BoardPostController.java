@@ -34,6 +34,15 @@ public class BoardPostController {
         boardPostService.createPost(boardPost);
         return "suc";
     }
+
+    @GetMapping("/{boardId}/{postId}")
+    public BoardPost getPost(@PathVariable Integer boardId, @PathVariable Integer postId) {
+        System.out.println("boardId = " + boardId);
+        System.out.println("postId = " + postId);
+        BoardPost post = boardPostService.getPost(boardId, postId);
+        System.out.println("post = " + post);
+        return post;
+    }
 }
 
 

@@ -30,4 +30,10 @@ public class BoardPostService {
         System.out.println("save = " + save);
         return "succc";
     }
+
+    public BoardPost getPost(Integer boardId, Integer postId) {
+        BoardPost byBoardIdAndId = boardPostRepository.findByBoardIdAndId(boardId, postId);
+        System.out.println("byBoardIdAndId = " + byBoardIdAndId);
+        return byBoardIdAndId;
+    }
 }
