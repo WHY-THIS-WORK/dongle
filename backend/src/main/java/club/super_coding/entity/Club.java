@@ -25,6 +25,7 @@ public class Club {
 
 
     @JoinColumn(name = "category")
+    @ColumnDefault("4")
     @ManyToOne(fetch = FetchType.LAZY)
     private Category category;// 카테고리
 
