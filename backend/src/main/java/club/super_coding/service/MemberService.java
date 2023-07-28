@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class MemberService {
+public class  MemberService {
     @Autowired  //한번만 복사
     MemberRepository memberRepository;
 

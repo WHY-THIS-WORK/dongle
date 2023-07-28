@@ -1,7 +1,7 @@
 package club.super_coding.dto;
 
 
-import club.super_coding.entity.MemberEntity;
+import club.super_coding.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,5 +14,6 @@ import lombok.NoArgsConstructor;
 public class SignInResponseDto {
     private String token;
     private int exprTime;
-    private MemberEntity user;
+    private Member user;
+
 }
