@@ -1,0 +1,16 @@
+.detail_category {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex-direction: column;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.detail_category>span {
+    font-size: 14px;
+    font-family: 'Inter';
+    font-weight: 400;
+    color: #7E7E7E;
+}

@@ -1,4 +1,4 @@
-package club.super_coding.controller;
+package club.super_coding.controller.club;
 
 import club.super_coding.entity.Club;
 import club.super_coding.service.ClubService;
@@ -9,28 +9,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 /*
  * 20230722 김주환
+ * 동아리 신청화면으로 이동
  * 동아리 신청 기능
  * */
 
 @Slf4j
 @RestController
 @RequestMapping("/")
-public class ClubListController {
+public class NewClubController {
 
     @Autowired
     ClubService clubService;
 
-
-
-
-  /*  @GetMapping("/newclub")
-    public List<Club> getClubAllList() { // 동아리 신청 화면으로 이동 GET /newclub
-        return clubService.getClubAllList();
-    }
-*/
+    // 동아리 신청 POST /newclub
     @PostMapping("/newclub")
     public Club postNewClub(@RequestBody Club club) {//동아리 신청 POST /newclub
-        // 동아리 신청 POST /newclub
         log.info(club.toString());
         clubService.saveNewClub(club);
         return club;

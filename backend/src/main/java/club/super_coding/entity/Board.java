@@ -1,43 +1,47 @@
 package club.super_coding.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter
+@Setter
 @Table(name = "board")
 public class Board {
 
     @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @Column(name = "board_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int boardId;// 게시글Id
 
-    @Column
-    private int club_id;//게시동아리_아이디
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "club_id", insertable = false, updatable = false)
+    private Club clubId;//동아리게시판->게시판Id
 
-    @Column
-    private int member_id;//게시판_작성자
+    @Column(name = "board_name")
+    private String boardName;//게시판_제목
 
-    @Column
-    private String title;//게시판_제목
+    @Column(name = "deleted")
+    private Integer deleted;//삭제여부
 
-    @Column
-    private String contents;//게시판_내용
 
-    @Column
-    private Date insert_date;//게시판_등록시간
-
-    @Column
-    private Date update_date;//게시판_업뎃시간
-
-    @Column
-    private Boolean deleted;//게시판_삭제유무
 }
+
+
+//    insertable = false, updatable = false
+  /*  @Temporal(TemporalType.TIMESTAMP) // 날짜와 시간, 데이터베이스 timestamp 타입과 매핑 (2020-12-18 23:36:33)
+    private Date insertDate;//게시판_등록시간
+
+    @Column(name = "update_date")
+    private Date updateDate;//게시판_업뎃시간
+
+    @Column(name = "deleted")
+    private Boolean deleted;//게시판_삭제유무*/
+

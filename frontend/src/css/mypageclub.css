@@ -1,0 +1,112 @@
+.myclub {
+  display: flex;
+  justify-content: center;
+}
+
+.myclub-container {
+  margin-top: 2.7rem;
+}
+
+.myclub-title {
+  color: #3f3f3f;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 1rem;
+}
+
+.myclub-box {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 8rem;
+}
+
+.myclub-box::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.myclub-box::-webkit-scrollbar-thumb {
+  border-radius: 70rem;
+  background-color: #ff8256;
+}
+
+.myclub-box::-webkit-scrollbar-track {
+  border-radius: 70rem;
+  background-color: #f0c8b9;
+  box-shadow: inset 0px 0px 5px white;
+}
+
+.myclub-list {
+  width: 27.3125rem;
+  height: 2.5rem;
+  border-radius: 0.3125rem;
+  border: 1.5px solid #d0d0d0;
+  background: #fff;
+  color: #000;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.myclub-list-leader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.4375rem;
+  height: 1.5625rem;
+  border-radius: 1.875rem;
+  background: #ff8256;
+  color: #fff;
+  text-align: center;
+  font-family: inherit;
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.myclub-list-signed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.4375rem;
+  height: 1.5625rem;
+  border-radius: 1.875rem;
+  background: #cfcfcf;
+  color: #fff;
+  text-align: center;
+  font-family: inherit;
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.mypage-club-edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mypage-club-edit__btn {
+  width: 27.3125rem;
+  height: 3.1875rem;
+  border-radius: 0.3125rem;
+  background: #ff8256;
+  color: #fff;
+  text-align: center;
+  font-family: inherit;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 0.4rem;
+}
