@@ -1,4 +1,4 @@
-package club.super_coding.entity.clubbard;
+package club.super_coding.entity.clubMember;
 
 import lombok.Data;
 

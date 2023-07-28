@@ -1,4 +1,4 @@
-package club.super_coding.entity.clubbard;
+package club.super_coding.entity.clubMember;
 
 import club.super_coding.entity.Club;
 import club.super_coding.entity.Member;
