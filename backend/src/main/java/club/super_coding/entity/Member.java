@@ -25,6 +25,7 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+
     //unique = true 유일한 값만 저장할수 있음을 의미 중복체크
     @Column(name = "member_id")
     private String memberId;
