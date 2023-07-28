@@ -13,7 +13,7 @@ export default function SideBar() {
       <SidebarBoardDiv>
         <div>목록</div>
         <div>공지사항</div>
-        <div>게시판목록/</div>
+        <div>게시판목록</div>
       </SidebarBoardDiv>
     </SidebarContainer>
   );
@@ -80,6 +80,6 @@ const SidebarBoardDiv = styled.div`
   width: 15.3125rem;
   height: 28.3125rem;
   flex-shrink: 0;
-  color: 1px solid #d9d9d9;
+  color: black;
   border: 1px solid #d9d9d9;
 `;

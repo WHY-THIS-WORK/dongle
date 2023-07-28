@@ -3,31 +3,28 @@ package club.super_coding.entity;
 
 import club.super_coding.dto.MemberDTO;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
 import javax.persistence.*;
-import java.util.Set;
 
 
 //db 정의 컬럼 생성
 
-@Entity(name = "member")
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity(name ="Entity")
 @Getter
 @Setter
 @Table(name = "member")
-public class MemberEntity {
+public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-
-
-    @Column(name = "club_id")
-    @ManyToMany(mappedBy = "memberId")
-    Set<Club> clubId;// Club테이블 다대다 조인
-
 
     //unique = true 유일한 값만 저장할수 있음을 의미 중복체크
     @Column(name = "member_id")
@@ -51,7 +48,7 @@ public class MemberEntity {
     @Column
     private int deleted;
 
-    public MemberEntity(MemberDTO dto) {
+    public Member(MemberDTO dto){
         this.password = dto.getPassword();
         this.email = dto.getEmail();
         this.nickname = dto.getNickname();
@@ -60,11 +57,4 @@ public class MemberEntity {
         this.join_date = dto.getJoinDate();
     }
 
-
-    public MemberEntity() {
-
-    }
 }
-
-
-
