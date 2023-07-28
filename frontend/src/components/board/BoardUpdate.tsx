@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import { TableWrapper } from "./Board.styled";
 import { Post } from "./Post.interface";
 import axios from "axios";
-import { getPosts } from "../../apis/board.api";
 
 interface Props {
   detailPost: Post;
-  setPosts: Function;
+  setDetailPost: Function;
   setIsUpdate(param: boolean): void;
 }
 
-export default function BoardUpdate({ detailPost, setPosts, setIsUpdate }: Props) {
+export default function BoardUpdate({ detailPost, setDetailPost, setIsUpdate }: Props) {
   const [values, setValues] = useState({
     id: detailPost.id,
     boardId: detailPost.boardId,
+    memberId: detailPost.memberId,
     title: detailPost.title,
     contents: detailPost.contents,
   });
@@ -28,13 +28,9 @@ export default function BoardUpdate({ detailPost, setPosts, setIsUpdate }: Props
   const handleSubmit = async (e: React.FormEvent) => {
     //제출
     e.preventDefault();
-    console.log("제출");
-    await axios.post(`http://localhost:5174/club/board/${detailPost.memberId}/${detailPost.id}`, values).then((res) => {
-      console.log(res);
-      if (res.data === "suc") {
-        getPosts(values.boardId, setPosts);
-        setIsUpdate(false);
-      }
+    await axios.post(`http://localhost:5174/club/board/${detailPost.boardId}/${detailPost.id}`, values).then((res) => {
+      setDetailPost(res.data);
+      setIsUpdate(false);
     });
   };
 

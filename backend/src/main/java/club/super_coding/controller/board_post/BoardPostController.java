@@ -49,10 +49,20 @@ public class BoardPostController {
         // dto로 받는 걸로 바꾸고 values 보내서 받으면 될듯
         System.out.println("boardId = " + boardId);
         System.out.println("postId = " + postId);
-        BoardPost post = boardPostService.updatePost(boardId, postId);
+        System.out.println("boardPostasdasd = " + boardPost.toString());
+        BoardPost post = boardPostService.updatePost(boardPost);
         System.out.println("post = " + post);
         return post;
+//        return null;
     }
+
+    @DeleteMapping("/{boardId}/{postId}")
+    public void deletePost(@PathVariable Integer boardId, @PathVariable Integer postId) {
+        System.out.println("boardId = " + boardId);
+        System.out.println("postId = " + postId);
+        boardPostService.delete(boardId, postId);
+    }
+
 }
 
 

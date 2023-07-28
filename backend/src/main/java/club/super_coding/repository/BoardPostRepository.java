@@ -15,4 +15,6 @@ public interface BoardPostRepository extends JpaRepository<BoardPost, Integer> {
     List<BoardPost> findAllByBoardId(Integer boardId);
 
     BoardPost findByBoardIdAndId(Integer boardId, Integer postId);
+
+    void deleteByBoardIdAndId(Integer boardId, Integer postId);
 }

@@ -36,4 +36,17 @@ public class BoardPostService {
         System.out.println("byBoardIdAndId = " + byBoardIdAndId);
         return byBoardIdAndId;
     }
+
+    public BoardPost updatePost(BoardPostDto boardPost) {
+        BoardPost byBoardIdAndId = boardPostRepository.findByBoardIdAndId(boardPost.getBoardId(), boardPost.getId());
+        byBoardIdAndId.setTitle(boardPost.getTitle());
+        byBoardIdAndId.setContents((boardPost.getContents()));
+        BoardPost save = boardPostRepository.save(byBoardIdAndId);
+        System.out.println("save = " + save);
+        return save;
+    }
+
+    public void delete(Integer boardId, Integer postId) {
+        boardPostRepository.deleteByBoardIdAndId(boardId, postId);
+    }
 }

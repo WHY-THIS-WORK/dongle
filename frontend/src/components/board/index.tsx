@@ -38,9 +38,9 @@ export default function Board({ testBoardId }: Props) {
       {isWrite ? (
         <BoardWrite testBoardId={testBoardId} setPosts={setPosts} setIsWrite={setIsWrite} />
       ) : isUpdate ? (
-        <BoardUpdate detailPost={detailPost} setPosts={setPosts} setIsUpdate={setIsUpdate} />
+        <BoardUpdate detailPost={detailPost} setDetailPost={setDetailPost} setIsUpdate={setIsUpdate} />
       ) : isDetail ? (
-        <BoardDetail detailPost={detailPost} setIsDetail={setIsDetail} setIsUpdate={setIsUpdate} />
+        <BoardDetail setPosts={setPosts} detailPost={detailPost} setIsDetail={setIsDetail} setIsUpdate={setIsUpdate} />
       ) : (
         <BoardList setDetailPost={setDetailPost} posts={posts} setIsDetail={setIsDetail} setIsWrite={setIsWrite} />
       )}

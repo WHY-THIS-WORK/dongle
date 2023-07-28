@@ -1,10 +1,7 @@
 package club.super_coding.entity;
 
 import club.super_coding.dto.BoardPostDto;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -17,6 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @Getter
+@Setter
 @Table(name = "board_post")
 public class BoardPost {
 
