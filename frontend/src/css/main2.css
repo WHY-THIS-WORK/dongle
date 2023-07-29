@@ -89,16 +89,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 
     /* background-color: aqua; */
 }
 
-.main2_img>img {
+.main2_img>img{
     width: 700px;
     height: 386px;
     border-radius: 10px;
-    object-fit:cover;
 
-    /* background-color: rgb(232, 232, 232); */
+    background-color: rgb(232, 232, 232);
 }
