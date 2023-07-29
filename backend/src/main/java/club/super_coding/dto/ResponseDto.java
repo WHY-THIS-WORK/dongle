@@ -17,6 +17,12 @@ public class ResponseDto<D> {
     public static <D> ResponseDto<D> setSuccess(String message, D data){
         return ResponseDto.set(true ,message,data);
     }
+    public static <D> ResponseDto<D> setIdFailed(String message, D data){
+        return ResponseDto.set(false ,message,data);
+    }
+    public static <D> ResponseDto<D> setIdSuccess(String message, D data){
+        return ResponseDto.set(false ,message,null);
+    }
     //실패 인스턴스
     public static <D> ResponseDto<D> setFailed(String message){
         return ResponseDto.set(false,message,null);
