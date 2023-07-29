@@ -26,6 +26,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     /* background-color: rgb(194, 136, 60); */
 }
 
@@ -36,6 +37,16 @@ header{
 
 .header_menu{
     width: 320px;
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* background-color: aqua; */
+}
+
+.header_menu1{
+    width: 180px;
     height: 65px;
     display: flex;
     justify-content: space-between;
