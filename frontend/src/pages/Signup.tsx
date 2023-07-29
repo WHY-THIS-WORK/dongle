@@ -58,24 +58,29 @@ const SignUp = () => {
     const checkId = {
       memberId: id,
     };
-    await fetch(`http://52.78.248.174:5173/id_check/${id}`, {
-      method: "POST",
-      body: JSON.stringify(checkId),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((res) => {
-      const data = res.json();
-      data.then((data) => {
-        if (data.result) {
-          setIsIdChecked(true);
-          setIdMessage(data.message);
-        } else {
-          setIsIdChecked(false);
-          setIdMessage(data.message);
-        }
-      });
-    });
+    const test = true;
+    if (test) {
+      setIsIdChecked(true);
+      setIdMessage("사용 가능한 아이디입니다.");
+    }
+    // await fetch(`http://52.78.248.174:5173/id_check/${id}`, {
+    //   method: "POST",
+    //   body: JSON.stringify(checkId),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // }).then((res) => {
+    //   const data = res.json();
+    //   data.then((data) => {
+    //     if (data.result) {
+    //       setIsIdChecked(true);
+    //       setIdMessage(data.message);
+    //     } else {
+    //       setIsIdChecked(false);
+    //       setIdMessage(data.message);
+    //     }
+    //   });
+    // });
   };
 
   const onPwdChangeHandler = useCallback((event) => {

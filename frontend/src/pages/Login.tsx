@@ -80,23 +80,6 @@ const Login = (): React.ReactElement => {
         .catch((error) => {
           console.log(error);
         });
-
-      // axios
-      //   .post("/login", body)
-      //   .then((res) => {
-      //     console.log(res);
-      //     const accessToken = res.data.access_token;
-      //     if ((res.data = "200")) {
-      //       window.alert("로그인이 완료되었습니다.");
-      //       window.localStorage.setItem(res.accessToken);
-      //       window.location.href = "/";
-      //     } else if ((res.data = "errorName")) {
-      //       window.alert("아이디 혹은 비밀번호가 일치하지 않습니다.");
-      //     }
-      //   })
-      //   .catch((error) => {
-      //     window.alert(error);
-      //   });
     } else if (!isId) {
       idRef.current.focus();
       setIdMessage("아이디를 입력해주세요.");
