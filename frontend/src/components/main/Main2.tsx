@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import '../../css/main2.css';
+import clubjoinImg from '../../assets/동아리신청.png';
 
 const Main2 = () => {
 
@@ -25,7 +26,7 @@ const Main2 = () => {
           </div>
         </div>
         <div className='main2_img'>
-          <img src=''/>
+          <img src={clubjoinImg} alt='동아리신청 이미지'/>
         </div>
       </div>
     </div>
