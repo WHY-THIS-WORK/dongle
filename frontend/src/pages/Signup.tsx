@@ -54,10 +54,15 @@ const SignUp = () => {
     }
   };
 
-  const onIdCheckHandler = async (userId) => {
+  const onIdCheckHandler = async () => {
     const checkId = {
-      id: userId,
+      memberId: id,
     };
+    // const test = true;
+    // if (test) {
+    //   setIsIdChecked(true);
+    //   setIdMessage("사용 가능한 아이디입니다.");
+    // }
     await fetch("http://52.78.248.174:5173/id_check", {
       method: "POST",
       body: JSON.stringify(checkId),
@@ -65,15 +70,16 @@ const SignUp = () => {
         "Content-Type": "application/json",
       },
     }).then((res) => {
-      const test = true;
-      if (test) {
-        console.log(res.status);
-        setIdMessage("사용 가능한 아이디입니다.");
-        setIsIdChecked(true);
-      } else {
-        setIdMessage("중복된 아이디입니다.");
-        setIsIdChecked(false);
-      }
+      const data = res.json();
+      data.then((data) => {
+        if (data.result) {
+          setIsIdChecked(true);
+          setIdMessage(data.message);
+        } else {
+          setIsIdChecked(false);
+          setIdMessage(data.message);
+        }
+      });
     });
   };
 
