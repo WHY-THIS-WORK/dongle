@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../../css/header.css";
 import HeaderBtn from "../header/HeaderBtn";
+import logo from '../../assets/로고.png';
 
 const Header2 = () => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const Header2 = () => {
     <header className="header">
       <div className="header_container">
         <div className="logo" onClick={() => navigate("/")}>
-          로고
+          <img src={logo} alt="로고" />
         </div>
         <div className="header_menu">
           <HeaderBtn address={"/login"} text={"로그인"} />

@@ -27,6 +27,10 @@ const Main = () => {
       const { scrollTop } = outerDivRef.current || {};
       const pageHeight = window.innerHeight;
 
+      // console.log('deltaY',deltaY);
+      // console.log('scrollTop', scrollTop);
+      // console.log('pageHeight', pageHeight);
+
       if (deltaY > 0) {
         // 스크롤 내릴 때
         if (
