@@ -12,10 +12,9 @@ const Header2 = () => {
         <div className="logo" onClick={() => navigate("/")}>
           <img src={logo} alt="로고" />
         </div>
-        <div className="header_menu">
+        <div className="header_menu1">
           <HeaderBtn address={"/login"} text={"로그인"} />
           <HeaderBtn address={"/signup"} text={"회원가입"} />
-          <HeaderBtn address={"/"} text={"홈"} />
         </div>
       </div>
     </header>
