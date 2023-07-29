@@ -1,13 +1,11 @@
 package club.super_coding.service;
 
 
-import club.super_coding.dto.LoginDto;
-import club.super_coding.dto.MemberDTO;
-import club.super_coding.dto.ResponseDto;
-import club.super_coding.dto.SignInResponseDto;
+import club.super_coding.dto.*;
 import club.super_coding.entity.Member;
 import club.super_coding.repository.MemberRepository;
 import club.super_coding.security.TokenProvider;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,19 +16,33 @@ public class AuthService {
     @Autowired
     TokenProvider tokenProvider;
 
+//    existsByMemberId
+
+//    boolean existed = memberRepository.existsByMemberIdAndPassword(loginId, loginPassword);
+//        if (!existed) return ResponseDto.setFailed("로그인 정보가 일치하지 않습니다.");
+
+    public ResponseDto<IdcheckDto> checkId(IdcheckDto dto) {
+
+        String memberId = dto.getLoginId();
+
+        boolean memberIdCheck = memberRepository.existsByMemberId(memberId);
+        if (memberIdCheck) return ResponseDto.setFailed("중복된 아이디 입니다.");
+
+        boolean memberIdCheck2 = memberRepository.existsByMemberId(memberId);
+        if (!memberIdCheck2) return ResponseDto.setIdSuccess("가입 가능한 아이디입니다. ", null);
+
+
+        return null;
+    }
+
+
     public ResponseDto<?> signUp(MemberDTO dto) {
-        String memberId = dto.getMemberId();
+
         String password = dto.getPassword();
         String passwordCheck = dto.getPasswordCheck();
 
 
         //memberId 중복 확인
-        try {
-            if (1 == memberRepository.countByMemberId(memberId)) return ResponseDto.setFailed("아이디가 중복 됩니다.");
-
-        } catch (Exception e) {
-            return ResponseDto.setFailed("Data Base Error!");
-        }
 
 
         //비밀번호가 일치 하지 않을경우 failed response 반환
@@ -74,6 +86,10 @@ public class AuthService {
         SignInResponseDto signInResponseDto = new SignInResponseDto(token, exprTime, member);
         return ResponseDto.setSuccess("로그인에 성공 하였습니다.", signInResponseDto);
     }
-}
+    //전화번호 변경
+
+    }
+
+
 
 
