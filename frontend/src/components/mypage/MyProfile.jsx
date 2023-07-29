@@ -37,32 +37,25 @@ const MyProfile = () => {
     }
   }, [tel]);
 
-  useEffect(() => {
-    if (!isLogin) {
-      window.alert("로그인 해주세요!");
-      window.location.href = "/login";
-      return;
-    } else {
-      const getUsersProfile = async () => {
-        await fetch("http://52.78.248.174:5173/mypage/profile", {
-          headers: {
-            "Content-Type": "application/json",
-            headers: {
-              authorization: `Bearer ${token}`,
-            },
-          },
-        }).then(async (res) => {
-          const data = await res.json();
-          data.then((data) => {
-            setName(data.memberId);
-            setEmail(data.email);
-            setTel(data.phone);
-          });
-        });
-      };
-      getUsersProfile();
-    }
-  }, [isLogin]);
+  // useEffect(() => {
+  //   if (!isLogin) {
+  //     window.alert("로그인 해주세요!");
+  //     window.location.href = "/login";
+  //     return;
+  //   } else {
+  //     const getUsersProfile = async () => {
+  //       await fetch("http://52.78.248.174:5173/users_profile").then((res) => {
+  //         const data = res.json();
+  //         data.then((data) => {
+  //           setName(data.memberId);
+  //           setEmail(data.email);
+  //           setTel(data.phone);
+  //         });
+  //       });
+  //     };
+  //     getUsersProfile();
+  //   }
+  // }, [isLogin]);
 
   const onEditHandler = () => {
     setEmailEdit(true);
@@ -131,12 +124,16 @@ const MyProfile = () => {
         phone: tel,
       };
       await fetch("http://52.78.248.174:5173/update_profile", {
-        method: "PUT",
+        method: "POST",
         body: JSON.stringify(body),
         headers: {
           "Content-Type": "application/json",
           headers: {
-            authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
+          },
+          xhrFields: {
+            // CORS 문제 우회해서 헤더 넘겨주기
+            withCredentials: true,
           },
         },
       }).then((res) => {
@@ -160,12 +157,12 @@ const MyProfile = () => {
         phone: tel,
       };
       await fetch("http://52.78.248.174:5173/update_profile", {
-        method: "PUT",
+        method: "POST",
         body: JSON.stringify(body),
         headers: {
           "Content-Type": "application/json",
           headers: {
-            authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         },
       }).then((res) => {
@@ -188,12 +185,12 @@ const MyProfile = () => {
         phone: tel,
       };
       await fetch("http://52.78.248.174:5173/update_profile", {
-        method: "PUT",
+        method: "POST",
         body: JSON.stringify(body),
         headers: {
           "Content-Type": "application/json",
           headers: {
-            authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         },
       }).then((res) => {

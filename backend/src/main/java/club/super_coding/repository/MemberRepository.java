@@ -15,22 +15,13 @@ public interface MemberRepository extends JpaRepository<Member,Integer> {
 
   boolean existsByMemberIdAndPassword(String memberId, String password);
 
-    boolean  existsByMemberId(String memberId);
+
 
  int countByMemberId(String memberId);
 
  Member findByMemberId(String memberId);
 
-
-
-//    Member FindByPhone(String phone);
-
-
-
-
-
-
-
+  Member findByMemberIdAndPassword (String memberId, String password);
 
 
 
