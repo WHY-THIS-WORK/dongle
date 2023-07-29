@@ -1,7 +1,7 @@
 import React from "react";
-import "../css/idcheck.css";
+import "../../css/idcheck.css";
 
-const IdCheck = ({ id, idMessage, onIdCheckHandler }) => {
+const IdCheck = ({ id, onIdCheckHandler }) => {
   return (
     <div className="id-check">
       <button
@@ -12,7 +12,6 @@ const IdCheck = ({ id, idMessage, onIdCheckHandler }) => {
       >
         아이디 중복 확인
       </button>
-      {<span className="error__message">{idMessage}</span>}
     </div>
   );
 };

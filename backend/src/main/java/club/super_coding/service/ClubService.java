@@ -26,10 +26,10 @@ public class ClubService {
 
     public List<Club> ClubAllList() {
         // 동아리 모두 조회
-        return clubRepository.findAll();
+        return clubRepository.ClubAndCategoryAll();
     }
     public Optional<Club> ClubOne(int clubid){// 동아리 id를 검색한 결과가 없을 수 있으니 Optional처리하여 에러방진
-        return clubRepository.findById(clubid);
+        return clubRepository.ClubAndCategoryOne(clubid);
     }
 
 

@@ -1,35 +1,43 @@
+
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import DetailCategory from '../components/detail/DetailCategory';
+import DetailText from '../components/detail/DetailText';
+import DetailTitle from '../components/detail/DetailTitle';
 import Header from '../components/header/Header';
 import SendBtn from '../components/public/SendBtn';
 import '../css/detail.css';
+import { useLocation } from 'react-router-dom';
 
 const Detail = () => {
+
+  const [list, setList] = useState([]);
+
+  const { pathname } = useLocation();
+  const id = pathname.slice(8)
+
+  useEffect(() => {
+    axios.get(`http://52.78.248.174:5173/club/${id}`)
+      .then((res) => {
+        setList({...res.data});
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, [])
+
+  const sendBtnHandle = () => {
+    return alert('동아리 신청이 완료되었습니다.');
+  }
+
   return (
     <div className='detail'>
       <Header/>
-      <div className='detail_category'>
-        <span>`${'코딩 동아리'}{'>'}${'프론트엔드 커뮤니티'}{'>'}${'상세페이지'}`</span>
-      </div>
+      {/* <DetailCategory/> */}
       <div className="detail_container">
-        <div className="detail_title">
-          <h1>프론트엔드 커뮤니티</h1>
-          <span>프론트엔드끼리 정보 공유와<br/>
-          소통을 위한 동아리 입니다.</span>
-        </div>
-        <div className="detail_text">
-          <span>안녕하세요!<br/>
-            저희는 주니어 프론트엔드끼리 자유로운 정보 공유와 소통을 목적으로 만들어진 동아리입니다!
-            <br />
-            저희는 주니어 프론트엔드끼리 자유로운 정보 공유와 소통을 목적으로 만들어진 동아리입니다!
-            <br />
-            저희는 주니어 프론트엔드끼리 자유로운 정보 공유와 소통을 목적으로 만들어진 동아리입니다!
-            <br />
-            저희는 주니어 프론트엔드끼리 자유로운 정보 공유와 소통을 목적으로 만들어진 동아리입니다!
-            <br />
-            <br />
-            저희는 주니어 프론트엔드끼리 자유로운 정보 공유와 소통을 목적으로 만들어진 동아리입니다!
-          </span>
-        </div>
-        <SendBtn text='동아리 신청하기'/>
+        <DetailTitle list={list}/>
+        <DetailText list={list} />
+        <SendBtn text='동아리 신청하기' sendBtnHandle={sendBtnHandle}/>
       </div>
     </div>
   )

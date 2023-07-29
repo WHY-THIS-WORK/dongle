@@ -1,0 +1,12 @@
+.mypage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.mypage-container {
+  display: flex;
+  width: 80%;
+  justify-content: center;
+}

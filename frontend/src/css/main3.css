@@ -130,12 +130,3 @@
 .main3_cards_container {
     display: flex;
 }
-
-.main3_card {
-    width: 341px;
-    height: 204px;
-    border-radius: 20px;
-    background-color: #ffffff;
-    scroll-snap-align: start;
-    margin-left: 27px;
-}
